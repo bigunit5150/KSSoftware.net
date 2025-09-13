@@ -1,0 +1,14 @@
+{
+  "name": "kssoftware-site",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Keith Smith personal site",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint:format": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
+

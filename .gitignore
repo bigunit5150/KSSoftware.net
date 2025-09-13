@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Node/JS
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Env/Secrets
+.env
+.env.*
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Editor
+.vscode/
+.idea/
+
+# Mac metadata anywhere
+**/.DS_Store
+
+# Ignore copied site snapshot directory
+keith-smith-engineering.com/
