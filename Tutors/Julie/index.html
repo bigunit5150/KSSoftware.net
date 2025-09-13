@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Julie</title>
+<meta name="description" content="Static HTML rendering of Julie.pdf"/>
+<link rel="preload" as="image" href="Julie_assets/page-001.jpg"/>
+<style>
+html,body{margin:0;background:#0b0c0f;color:#e5e7eb;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial;}
+.container{max-width:900px;margin:0 auto;padding:16px;}
+.page{box-shadow:0 10px 25px rgba(0,0,0,.25);border-radius:6px;overflow:hidden;background:#111827;margin:0 auto 24px;}
+.page img{display:block;width:100%;height:auto;}
+
+/* Print-friendly: white pages, page breaks */
+@media print{
+  html,body{background:#ffffff;color:#000000}
+  .container{max-width:none;padding:0}
+  .page{box-shadow:none;background:#ffffff;break-after:page;margin:0 auto 16px;border-radius:0}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div id="p1" class="page"><img loading="lazy" decoding="async" src="Julie_assets/page-001.jpg" alt="Page 1"/></div>
+</div>
+</body>
+</html>
