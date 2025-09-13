@@ -2700,8 +2700,9 @@
     ></script>
     <script type="text/javascript" id="jquery-js-after">
       /* <![CDATA[ */
-      jqueryParams.length &&
-        $.each(jqueryParams, function (e, r) {
+      window.jqueryParams = window.jqueryParams || [];
+      window.jqueryParams.length &&
+        $.each(window.jqueryParams, function (e, r) {
           if ('function' == typeof r) {
             var n = String(r);
             n.replace('$', 'jQuery');
