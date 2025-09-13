@@ -1,9 +1,10 @@
 // Minimal jQuery stub to queue calls until real jQuery loads
 (function () {
-  var jqueryParams = [];
+  // Ensure a global queue exists for later inline usage
+  window.jqueryParams = window.jqueryParams || [];
 
   function push(arg) {
-    jqueryParams = [].concat(jqueryParams, arg);
+    window.jqueryParams = [].concat(window.jqueryParams, arg);
     return jQuery;
   }
 
@@ -36,11 +37,11 @@
 
   // Queue lifecycle hooks
   jQuery.ready = function (r) {
-    jqueryParams = [].concat(jqueryParams, r);
+    window.jqueryParams = [].concat(window.jqueryParams, r);
   };
   $.ready = jQuery.ready;
   jQuery.load = function (r) {
-    jqueryParams = [].concat(jqueryParams, r);
+    window.jqueryParams = [].concat(window.jqueryParams, r);
   };
   $.load = jQuery.load;
   jQuery.fn.ready = jQuery.ready;

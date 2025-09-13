@@ -32,3 +32,6 @@ coverage/
 
 # Ignore copied site snapshot directory
 keith-smith-engineering.com/
+
+# Python virtual env
+.venv/

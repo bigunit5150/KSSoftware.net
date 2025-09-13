@@ -3,7 +3,9 @@
   try {
     window.__MOCK_IAWP__ = true;
 
-    var LIVE_RE = /^https?:\/\/keith-smith-engineering\.com\/wp-json\/iawp\/search/i;
+    // Match production hosts we use for the same endpoint
+    var LIVE_RE =
+      /^https?:\/\/(?:[^\/]+\.)?(?:kssoftware\.net|keith-smith-engineering\.com)\/wp-json\/iawp\/search/i;
     var LOCAL_RE = /^\/wp-json\/iawp\/search/i;
     var DISABLED_RE = /^\/___disabled_wpjson\/iawp\/search/i;
 
