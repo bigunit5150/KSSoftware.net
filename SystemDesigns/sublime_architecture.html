@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sublime Security Platform Architecture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .architecture {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .layer {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .layer-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .layer-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        
+        .components {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .component {
+            background: white;
+            border: 2px solid #cbd5e0;
+            border-radius: 6px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .component:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .component-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .component-desc {
+            font-size: 12px;
+            color: #718096;
+            line-height: 1.5;
+        }
+        
+        .component-tech {
+            font-size: 11px;
+            color: #667eea;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        
+        .flow-arrow {
+            text-align: center;
+            padding: 10px;
+            color: #667eea;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .highlight-box {
+            background: #edf2f7;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+        
+        .highlight-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .highlight-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .highlight-list li {
+            padding: 4px 0;
+            color: #4a5568;
+            font-size: 13px;
+        }
+        
+        .highlight-list li::before {
+            content: '✓ ';
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #4a5568;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        .color-customer { background: #fbd38d; border: 2px solid #f6ad55; }
+        .color-ingestion { background: #9ae6b4; border: 2px solid #68d391; }
+        .color-detection { background: #90cdf4; border: 2px solid #63b3ed; }
+        .color-ai { background: #fbb6ce; border: 2px solid #f687b3; }
+        .color-storage { background: #d6bcfa; border: 2px solid #b794f4; }
+        .color-action { background: #fc8181; border: 2px solid #f56565; }
+        
+        @media (max-width: 768px) {
+            .components {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Sublime Security Platform Architecture</h1>
+        <div class="subtitle">Real-Time Email Threat Detection System with Retroactive Scanning</div>
+        
+        <!-- Scale Statistics -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value">2.5B</div>
+                <div class="stat-label">Emails / Day</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">100K</div>
+                <div class="stat-label">Peak Emails / Sec</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">&lt;2s</div>
+                <div class="stat-label">Processing Latency</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">3.75 PB</div>
+                <div class="stat-label">30-Day Storage</div>
+            </div>
+        </div>
+        
+        <div class="architecture">
+            <!-- Customer Mail Systems -->
+            <div class="layer" style="border-color: #f6ad55;">
+                <div class="layer-title">📧 Customer Mail Systems</div>
+                <div class="components">
+                    <div class="component" style="border-color: #f6ad55;">
+                        <div class="component-name">Microsoft 365</div>
+                        <div class="component-desc">Exchange Online, Graph API integration</div>
+                    </div>
+                    <div class="component" style="border-color: #f6ad55;">
+                        <div class="component-name">Google Workspace</div>
+                        <div class="component-desc">Gmail, Gmail API integration</div>
+                    </div>
+                    <div class="component" style="border-color: #f6ad55;">
+                        <div class="component-name">IMAP Mail Servers</div>
+                        <div class="component-desc">Legacy/self-hosted email systems</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <!-- Ingestion Layer -->
+            <div class="layer" style="border-color: #68d391;">
+                <div class="layer-title">📥 Ingestion Layer</div>
+                <div class="components">
+                    <div class="component" style="border-color: #68d391;">
+                        <div class="component-name">Email Sync Service</div>
+                        <div class="component-desc">Webhooks, API polling, journaling capture</div>
+                        <div class="component-tech">AWS Lambda, Python</div>
+                    </div>
+                    <div class="component" style="border-color: #68d391;">
+                        <div class="component-name">Message Queue</div>
+                        <div class="component-desc">Customer-specific topics, ordering guarantees, replay capability</div>
+                        <div class="component-tech">Apache Kafka</div>
+                    </div>
+                    <div class="component" style="border-color: #68d391;">
+                        <div class="component-name">MDM Parser</div>
+                        <div class="component-desc">Convert email to structured JSON (Message Data Model)</div>
+                        <div class="component-tech">Python, Kubernetes</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <!-- Detection Layer -->
+            <div class="layer" style="border-color: #63b3ed;">
+                <div class="layer-title">🔍 Detection Engines (Parallel Processing)</div>
+                <div class="components">
+                    <div class="component" style="border-color: #63b3ed;">
+                        <div class="component-name">Identity & Auth Engine</div>
+                        <div class="component-desc">SPF, DKIM, DMARC validation; spoofing detection; header analysis</div>
+                        <div class="component-tech">Latency: 100-200ms</div>
+                    </div>
+                    <div class="component" style="border-color: #63b3ed;">
+                        <div class="component-name">Content Analysis</div>
+                        <div class="component-desc">NLP sentiment, urgency detection, AI-generated text detection</div>
+                        <div class="component-tech">LLMs, PyTorch | 500ms-1s</div>
+                    </div>
+                    <div class="component" style="border-color: #63b3ed;">
+                        <div class="component-name">Link & URL Analysis</div>
+                        <div class="component-desc">Reputation scoring, phishing detection, redirect analysis</div>
+                        <div class="component-tech">Redis cache | 200-500ms</div>
+                    </div>
+                    <div class="component" style="border-color: #63b3ed;">
+                        <div class="component-name">Attachment Scanner</div>
+                        <div class="component-desc">Malware detection, sandbox detonation, file type validation</div>
+                        <div class="component-tech">Sandboxing | 1-3s</div>
+                    </div>
+                    <div class="component" style="border-color: #63b3ed;">
+                        <div class="component-name">Visual Analysis</div>
+                        <div class="component-desc">Logo spoofing, QR codes, screenshot detection</div>
+                        <div class="component-tech">Computer Vision | 500ms-1s</div>
+                    </div>
+                    <div class="component" style="border-color: #63b3ed;">
+                        <div class="component-name">Behavioral Analysis</div>
+                        <div class="component-desc">Sender patterns, volume anomalies, account compromise indicators</div>
+                        <div class="component-tech">Time-series DB | 100-300ms</div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 15px;">
+                    <div class="highlight-title">🎯 MQL Rule Engine</div>
+                    <div class="component-desc" style="margin-bottom: 10px;">
+                        SQL-like query execution over Message Data Model. Runs platform rules + customer custom rules.
+                    </div>
+                    <div class="component-tech">Custom DSL Interpreter, Python</div>
+                </div>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <!-- AI Agents -->
+            <div class="layer" style="border-color: #f687b3;">
+                <div class="layer-title">🤖 Autonomous AI Agents</div>
+                <div class="components">
+                    <div class="component" style="border-color: #f687b3;">
+                        <div class="component-name">ASA - Autonomous Security Analyst</div>
+                        <div class="component-desc">Triages user-reported emails, runs full detection suite, performs URL detonation, generates TTP analysis, auto-quarantines threats</div>
+                        <div class="component-tech">LLM-powered decision engine</div>
+                    </div>
+                    <div class="component" style="border-color: #f687b3;">
+                        <div class="component-name">ADÉ - Autonomous Detection Engineer</div>
+                        <div class="component-desc">Analyzes missed attacks, generates MQL rules, backtests against 30 days of historical data, submits for approval</div>
+                        <div class="component-tech">ML pipeline, Python</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <!-- Action Layer -->
+            <div class="layer" style="border-color: #f56565;">
+                <div class="layer-title">⚡ Action Engine</div>
+                <div class="components">
+                    <div class="component" style="border-color: #f56565;">
+                        <div class="component-name">Quarantine Service</div>
+                        <div class="component-desc">Remove from inbox via Graph/Gmail API</div>
+                    </div>
+                    <div class="component" style="border-color: #f56565;">
+                        <div class="component-name">Warning & Flagging</div>
+                        <div class="component-desc">Modify subject, add banners, notify users</div>
+                    </div>
+                    <div class="component" style="border-color: #f56565;">
+                        <div class="component-name">Attachment Stripping</div>
+                        <div class="component-desc">Remove suspicious attachments while keeping email</div>
+                    </div>
+                    <div class="component" style="border-color: #f56565;">
+                        <div class="component-name">Alert System</div>
+                        <div class="component-desc">Notify security teams, generate incident tickets</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrow">↓</div>
+            
+            <!-- Storage Layer -->
+            <div class="layer" style="border-color: #b794f4;">
+                <div class="layer-title">💾 Storage Layer</div>
+                <div class="components">
+                    <div class="component" style="border-color: #b794f4;">
+                        <div class="component-name">Email Bodies & Attachments</div>
+                        <div class="component-desc">Tiered storage: S3 Standard (7d) → Infrequent Access (23d) → Glacier (archive)</div>
+                        <div class="component-tech">AWS S3, 3.75 PB for 30 days</div>
+                    </div>
+                    <div class="component" style="border-color: #b794f4;">
+                        <div class="component-name">Email Metadata</div>
+                        <div class="component-desc">Headers, sender info, timestamps, customer mapping</div>
+                        <div class="component-tech">Cassandra / PostgreSQL</div>
+                    </div>
+                    <div class="component" style="border-color: #b794f4;">
+                        <div class="component-name">Detection Results</div>
+                        <div class="component-desc">Threat scores, rule matches, audit logs, searchability</div>
+                        <div class="component-tech">Elasticsearch</div>
+                    </div>
+                    <div class="component" style="border-color: #b794f4;">
+                        <div class="component-name">Customer Rules & Config</div>
+                        <div class="component-desc">MQL rules, whitelists, blacklists, action policies</div>
+                        <div class="component-tech">PostgreSQL / DynamoDB</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Retroactive Scanning -->
+            <div class="highlight-box">
+                <div class="highlight-title">🔄 Retroactive Scanning System (Key Architectural Challenge)</div>
+                <div class="component-desc" style="margin-bottom: 10px;">
+                    When new detection rule is deployed, scan 75B historical emails (30 days × 2.5B/day) in 24 hours = 870K emails/sec
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div class="component">
+                        <div class="component-name">Dedicated Batch Cluster</div>
+                        <div class="component-desc">Separate compute from real-time pipeline to prevent resource contention</div>
+                        <div class="component-tech">Kubernetes, Spot instances</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-name">Progressive Scanning</div>
+                        <div class="component-desc">Newest emails first (most likely in inbox), high-value customers prioritized</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-name">Pre-filtering</div>
+                        <div class="component-desc">Use cheap checks to narrow scope before expensive scans</div>
+                    </div>
+                    <div class="component">
+                        <div class="component-name">Immediate Quarantine</div>
+                        <div class="component-desc">Don't wait for full scan - quarantine as threats found</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Multi-tenancy -->
+            <div class="highlight-box">
+                <div class="highlight-title">🏢 Multi-Tenancy Architecture</div>
+                <ul class="highlight-list">
+                    <li><strong>Kafka:</strong> Dedicated topic per customer for ordering & isolation</li>
+                    <li><strong>Cassandra:</strong> Partition key includes customer_id for data isolation</li>
+                    <li><strong>S3:</strong> Prefix-based isolation (/customer-id/...)</li>
+                    <li><strong>Detection Workers:</strong> Multi-tenant with resource quotas & priority queues</li>
+                    <li><strong>Rate Limiting:</strong> Per-customer API throttling to prevent noisy neighbors</li>
+                </ul>
+            </div>
+            
+            <!-- Key Design Principles -->
+            <div class="highlight-box">
+                <div class="highlight-title">🎯 Key Design Principles</div>
+                <ul class="highlight-list">
+                    <li><strong>Tiered Detection:</strong> 70% of emails decided in <200ms with cheap checks; expensive AI only when needed</li>
+                    <li><strong>Horizontal Scalability:</strong> All services stateless; scale by adding workers</li>
+                    <li><strong>Replay Capability:</strong> Kafka retention enables debugging, reprocessing, analytics</li>
+                    <li><strong>Auditability:</strong> Every decision logged with explanation (MQL rule that triggered, threat score, etc.)</li>
+                    <li><strong>Resource Isolation:</strong> Customer A's attack burst cannot impact Customer B's latency</li>
+                    <li><strong>Cost Optimization:</strong> Storage tiering, spot instances for batch, rightsized compute</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color color-customer"></div>
+                <span>Customer Systems</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-ingestion"></div>
+                <span>Ingestion Layer</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-detection"></div>
+                <span>Detection Engines</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-ai"></div>
+                <span>AI Agents</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-action"></div>
+                <span>Action Layer</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-storage"></div>
+                <span>Storage Layer</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
