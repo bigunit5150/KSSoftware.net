@@ -1,0 +1,227 @@
+/* ============================================
+   About Page — Additional Styles
+   ============================================ */
+
+.about-header {
+  text-align: center;
+  padding: 80px 0 48px;
+}
+
+.about-headshot {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  outline: 2px solid rgba(232, 162, 48, 0.4);
+  outline-offset: 4px;
+  margin: 0 auto 24px;
+}
+
+.about-header h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 2.4rem;
+}
+
+.about-header .subtitle {
+  color: var(--text-2);
+  margin-top: 8px;
+  font-size: 1rem;
+}
+
+.about-header .meta {
+  color: var(--text-3);
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+.about-header .meta a {
+  color: var(--amber);
+  text-decoration: none;
+}
+
+/* ---- Content Column ---- */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---- Section Headings ---- */
+.about-content .section-heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---- Summary Block ---- */
+.summary-block {
+  font-size: 1rem;
+  color: var(--text-2);
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.summary-block p + p {
+  margin-top: 16px;
+}
+
+/* ---- Experience Cards ---- */
+.experience-card {
+  margin-bottom: 20px;
+}
+
+.experience-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.experience-card h3 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+
+.experience-card .role-title {
+  color: var(--amber);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.experience-card .dates {
+  font-size: 0.85rem;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.experience-card ul {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  padding-left: 20px;
+}
+
+.experience-card li + li {
+  margin-top: 4px;
+}
+
+/* ---- Results Cards ---- */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.result-card {
+  text-align: center;
+  padding: 28px 20px;
+}
+
+.result-card .stat-number {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.result-card p {
+  font-size: 0.9rem;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+/* ---- Skills ---- */
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+/* ---- Testimonial Stack ---- */
+.about-content .card + .card {
+  margin-top: 20px;
+}
+
+/* ---- Q&A ---- */
+.qa-item {
+  margin-bottom: 24px;
+}
+
+.qa-item dt {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: var(--text-1);
+  margin-bottom: 8px;
+}
+
+.qa-item dd {
+  font-size: 0.95rem;
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+/* ---- Interests ---- */
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.interest-card {
+  overflow: hidden;
+}
+
+.interest-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.interest-card .interest-label {
+  padding: 16px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+/* ---- About Footer ---- */
+.about-footer {
+  text-align: center;
+  padding: 48px 0 32px;
+}
+
+.about-footer a {
+  color: var(--amber);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: gap 0.2s;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .results-grid,
+  .interests-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card .card-header {
+    flex-direction: column;
+  }
+
+  .about-header h1 {
+    font-size: 1.8rem;
+  }
+}
