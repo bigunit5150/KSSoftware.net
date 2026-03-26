@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Job Tracker for Notion — Chrome Extension | KSSoftware</title>
+    <meta
+      name="description"
+      content="A free Chrome extension that captures job postings from any job board to your personal Notion database in one click. Built by Keith Smith."
+    />
+    <link rel="canonical" href="https://kssoftware.net/projects/job-tracker.html" />
+
+    <meta property="og:title" content="Job Tracker for Notion — Chrome Extension | KSSoftware" />
+    <meta
+      property="og:description"
+      content="A free Chrome extension that captures job postings from any job board to your personal Notion database in one click."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kssoftware.net/projects/job-tracker.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- ========== NAV ========== -->
+    <nav id="site-nav">
+      <div class="container nav-inner">
+        <a href="../index.html" class="logo-lockup" aria-label="KSSoftware home">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M18 2L34 18L18 34L2 18Z" stroke="#e8a230" stroke-width="1.8" fill="none" />
+            <path
+              d="M13 22 Q18 11 23 22"
+              stroke="#e8a230"
+              stroke-width="1.6"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path
+              d="M10 25 Q18 6 26 25"
+              stroke="#e8a230"
+              stroke-width="1"
+              fill="none"
+              stroke-linecap="round"
+              opacity="0.45"
+            />
+            <circle cx="18" cy="22.5" r="2" fill="#e8a230" />
+          </svg>
+          <span class="logo-wordmark">KSSoftware</span>
+        </a>
+
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#process">How It Works</a></li>
+          <li><a href="index.html">Projects</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../index.html#contact" class="btn btn-primary">Book a Call</a></li>
+        </ul>
+
+        <button type="button" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <div class="container hero-inner" style="grid-template-columns: 1fr; text-align: center">
+        <div>
+          <p class="eyebrow">Open Source Project</p>
+          <h1>
+            One click to save any
+            <br />
+            job posting to Notion.
+          </h1>
+          <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
+            Job Tracker is a free Chrome extension that captures job postings from any job board and
+            saves them as structured pages in your own Notion database — automatically extracting
+            the role, company, location, and full job description.
+          </p>
+          <div class="hero-cta reveal" style="justify-content: center">
+            <!-- TODO: replace with real URL after Chrome Web Store submission -->
+            <a href="#chrome-store" class="btn btn-primary">Install from Chrome Web Store &rarr;</a>
+            <a href="https://github.com/bigunit5150/JobTrackerChromeExtension" class="btn btn-ghost">View on GitHub &rarr;</a>
+          </div>
+          <p
+            class="reveal"
+            style="
+              font-size: 0.85rem;
+              color: var(--text-3);
+              margin-top: 24px;
+              letter-spacing: 0.02em;
+            "
+          >
+            Free &nbsp;&middot;&nbsp; No account required &nbsp;&middot;&nbsp; Your data stays in
+            your own Notion workspace
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section id="how-it-works">
+      <div class="container">
+        <p class="eyebrow">How It Works</p>
+        <h2 class="section-headline">
+          From job board to Notion
+          <br />
+          in under 3 seconds
+        </h2>
+
+        <div class="grid-3 steps-grid">
+          <div class="card reveal">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <path
+                  d="M8 4h10l8 8v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"
+                  stroke="#e8a230"
+                  stroke-width="1.5"
+                  fill="none"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M18 4v8h8"
+                  stroke="#e8a230"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"
+                  fill="none"
+                />
+                <path
+                  d="M12 18h8M12 22h5"
+                  stroke="#e8a230"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="step-number">01</div>
+            <h3 class="card-title">Find a role</h3>
+            <p class="card-body">
+              Browse job boards as you normally would — Greenhouse, Lever, Workday, LinkedIn, or any
+              other site.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <path
+                  d="M16 6v20M6 16h20"
+                  stroke="#e8a230"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <circle cx="16" cy="16" r="12" stroke="#e8a230" stroke-width="1.5" fill="none" />
+                <circle cx="16" cy="16" r="3" fill="#e8a230" opacity="0.4" />
+              </svg>
+            </div>
+            <div class="step-number">02</div>
+            <h3 class="card-title">Click the icon</h3>
+            <p class="card-body">
+              Click the Job Tracker icon in your Chrome toolbar. The extension captures the page and
+              extracts the role details automatically.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <rect
+                  x="6"
+                  y="4"
+                  width="20"
+                  height="24"
+                  rx="2"
+                  stroke="#e8a230"
+                  stroke-width="1.5"
+                  fill="none"
+                />
+                <path
+                  d="M11 12h10M11 16h10M11 20h6"
+                  stroke="#e8a230"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M11 8h4"
+                  stroke="#e8a230"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  opacity="0.6"
+                />
+              </svg>
+            </div>
+            <div class="step-number">03</div>
+            <h3 class="card-title">It's in Notion</h3>
+            <p class="card-body">
+              A structured page appears in your Notion database — role title, company, location,
+              salary range, and the full job description, ready to review.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== FEATURES ========== -->
+    <section id="features">
+      <div class="container">
+        <p class="eyebrow">Features</p>
+        <h2 class="section-headline">
+          Built for engineers who take
+          <br />
+          their job search seriously
+        </h2>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3 class="card-title">Supports all major job boards</h3>
+            <p class="card-body">
+              Built-in parsers for Greenhouse, Lever, Workday, and LinkedIn Jobs. Falls back
+              gracefully to a generic extractor for any other site.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3 class="card-title">Never save the same role twice</h3>
+            <p class="card-body">
+              When you open the extension on a posting you have already saved, the icon shows a
+              yellow ring so you know before you click.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3 class="card-title">Smarter extraction with Claude</h3>
+            <p class="card-body">
+              Add your own Anthropic API key to enable AI-powered extraction on job boards the
+              built-in parser doesn't fully support.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3 class="card-title">Completely private by design</h3>
+            <p class="card-body">
+              No accounts, no servers, no tracking. You supply your own Notion integration token and
+              everything goes directly to your workspace.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3 class="card-title">Always know what's happening</h3>
+            <p class="card-body">
+              The toolbar icon communicates status at a glance: idle, capturing, success, error, and
+              duplicate — no need to open the popup.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3 class="card-title">Pipeline dashboard included</h3>
+            <p class="card-body">
+              A companion Notion template gives you a live pipeline view, weekly goal tracking, and
+              a status-filtered table of every role you are tracking.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== REQUIREMENTS ========== -->
+    <section id="requirements">
+      <div class="container">
+        <p class="eyebrow">Requirements</p>
+        <h2 class="section-headline">Designed for technical users</h2>
+
+        <div class="reveal" style="max-width: 680px">
+          <p class="who-body">
+            Job Tracker is a developer tool. It requires a free Notion account and a personal
+            integration token — a one-time 5-minute setup. An Anthropic API key is optional and only
+            needed for AI-powered extraction on lesser-known job boards.
+          </p>
+
+          <ul
+            style="
+              list-style: none;
+              margin-top: 32px;
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+            "
+          >
+            <li style="display: flex; align-items: center; gap: 12px">
+              <span class="badge" style="margin-top: 0">Required</span>
+              <span style="font-size: 0.95rem; color: var(--text-2)">Notion account (free)</span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 12px">
+              <span class="badge" style="margin-top: 0">Required</span>
+              <span style="font-size: 0.95rem; color: var(--text-2)">
+                Notion integration token (created at notion.so/my-integrations)
+              </span>
+            </li>
+            <li style="display: flex; align-items: center; gap: 12px">
+              <span
+                class="badge"
+                style="margin-top: 0; background: var(--bg-subtle); color: var(--text-3)"
+              >
+                Optional
+              </span>
+              <span style="font-size: 0.95rem; color: var(--text-2)">
+                Anthropic API key (for AI-powered extraction)
+              </span>
+            </li>
+          </ul>
+
+          <a
+            href="https://github.com/bigunit5150/JobTrackerChromeExtension"
+            style="
+              color: var(--amber);
+              font-size: 0.9rem;
+              text-decoration: none;
+              display: inline-flex;
+              align-items: center;
+              gap: 6px;
+              margin-top: 32px;
+            "
+          >
+            Read the full setup guide &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== NOTION TEMPLATE ========== -->
+    <section id="template">
+      <div class="container">
+        <p class="eyebrow">Included Template</p>
+        <h2 class="section-headline">
+          Your job search dashboard,
+          <br />
+          ready to go
+        </h2>
+
+        <div class="reveal" style="max-width: 680px">
+          <p class="who-body">
+            Duplicate the companion Notion template into your workspace and your dashboard is ready
+            before you capture your first role. No configuration required — the views, filters, and
+            pipeline stages are all pre-built.
+          </p>
+
+          <ul
+            style="
+              list-style: none;
+              margin-top: 28px;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+            "
+          >
+            <li style="font-size: 0.95rem; color: var(--text-2); display: flex; gap: 10px">
+              <span style="color: var(--amber)">&#8226;</span>
+              Bookmarks and applications this week vs your weekly goals
+            </li>
+            <li style="font-size: 0.95rem; color: var(--text-2); display: flex; gap: 10px">
+              <span style="color: var(--amber)">&#8226;</span>
+              Pipeline table with status tabs — All active, Bookmarked, AI Review, Applying,
+              Applied, Interviewing, Negotiating, Accepted, Archived
+            </li>
+            <li style="font-size: 0.95rem; color: var(--text-2); display: flex; gap: 10px">
+              <span style="color: var(--amber)">&#8226;</span>
+              Weekly cadence bar charts
+            </li>
+            <li style="font-size: 0.95rem; color: var(--text-2); display: flex; gap: 10px">
+              <span style="color: var(--amber)">&#8226;</span>
+              AI review queue showing agent evaluation notes
+            </li>
+          </ul>
+
+          <a href="https://ribbon-punishment-423.notion.site/Job-Search-Dashboard-32b037c8790b80f1a3e8c5a95e140dff" class="btn btn-ghost" style="margin-top: 32px">
+            Duplicate the Notion template &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== OPEN SOURCE + SUPPORT ========== -->
+    <section id="open-source">
+      <div class="container">
+        <p class="eyebrow">Free & Open Source</p>
+
+        <div class="grid-2">
+          <div class="reveal">
+            <h3
+              style="
+                font-family: var(--font-display);
+                font-weight: 300;
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+              "
+            >
+              Free to use, forever
+            </h3>
+            <p class="who-body">
+              Job Tracker is open source and free. The code is on GitHub — fork it, adapt it, or
+              contribute. If it saves you time during your job search, a coffee is appreciated but
+              never expected.
+            </p>
+            <a
+              href="https://buymeacoffee.com/kjsmith5150"
+              target="_blank"
+              rel="noopener"
+              style="
+                color: var(--amber);
+                font-size: 0.9rem;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                margin-top: 20px;
+              "
+            >
+              Buy Me a Coffee &rarr;
+            </a>
+          </div>
+
+          <div class="reveal">
+            <h3
+              style="
+                font-family: var(--font-display);
+                font-weight: 300;
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+              "
+            >
+              Questions or issues?
+            </h3>
+            <p class="who-body">
+              Open an issue on GitHub for bugs, feature requests, or questions. For anything else,
+              reach out directly.
+            </p>
+            <a
+              href="https://github.com/bigunit5150/JobTrackerChromeExtension/issues"
+              style="
+                color: var(--amber);
+                font-size: 0.9rem;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                margin-top: 20px;
+              "
+            >
+              Open an issue on GitHub &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; 2026 KSSoftware &nbsp;&middot;&nbsp;
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          &nbsp;&middot;&nbsp; Built for small business
+        </p>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>
