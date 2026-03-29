@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Step 3: Configure Claude — AI Job Search | KSSoftware</title>
+    <meta
+      name="description"
+      content="Create your Claude Project, upload resumes, and run the onboarding prompt to configure your AI job search system."
+    />
+    <link rel="canonical" href="https://kssoftware.net/job-search-ai/claude-setup.html" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .prompt-container {
+        background: var(--bg);
+        border: 1px solid var(--border-mid);
+        border-radius: var(--card-radius);
+        overflow: hidden;
+        margin: 32px 0;
+      }
+      .prompt-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        background: var(--bg-subtle);
+        border-bottom: 1px solid var(--border);
+      }
+      .prompt-label {
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        color: var(--amber);
+        text-transform: uppercase;
+      }
+      .copy-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: transparent;
+        border: 1px solid var(--border-mid);
+        border-radius: var(--radius-sm);
+        color: var(--text-2);
+        font-family: var(--font-body);
+        font-size: 13px;
+        padding: 6px 12px;
+        cursor: pointer;
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .copy-btn:hover {
+        color: var(--amber);
+        border-color: var(--amber);
+      }
+      .copy-btn.copied {
+        color: #4caf50;
+        border-color: #4caf50;
+      }
+      .prompt-body {
+        padding: 24px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--text-2);
+        white-space: pre-wrap;
+        word-break: break-word;
+        max-height: 480px;
+        overflow-y: auto;
+        margin: 0;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border-mid) transparent;
+      }
+      .prompt-body::-webkit-scrollbar {
+        width: 6px;
+      }
+      .prompt-body::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .prompt-body::-webkit-scrollbar-thumb {
+        background: var(--border-mid);
+        border-radius: 3px;
+      }
+      .completion-callout {
+        background: var(--amber-dim);
+        border: 1px solid var(--border-mid);
+        border-radius: var(--card-radius);
+        padding: 28px 32px;
+        text-align: center;
+        margin-top: 48px;
+      }
+      .completion-callout p {
+        font-family: var(--font-display);
+        font-weight: 300;
+        font-style: italic;
+        font-size: 1.1rem;
+        color: var(--text-1);
+      }
+      .completion-callout a {
+        color: var(--amber);
+        text-decoration: none;
+      }
+      .page-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+      }
+      .page-nav a {
+        color: var(--amber);
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== NAV ========== -->
+    <nav id="site-nav">
+      <div class="container nav-inner">
+        <a href="../index.html" class="logo-lockup" aria-label="KSSoftware home">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M18 2L34 18L18 34L2 18Z" stroke="#e8a230" stroke-width="1.8" fill="none" />
+            <path
+              d="M13 22 Q18 11 23 22"
+              stroke="#e8a230"
+              stroke-width="1.6"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path
+              d="M10 25 Q18 6 26 25"
+              stroke="#e8a230"
+              stroke-width="1"
+              fill="none"
+              stroke-linecap="round"
+              opacity="0.45"
+            />
+            <circle cx="18" cy="22.5" r="2" fill="#e8a230" />
+          </svg>
+          <span class="logo-wordmark">KSSoftware</span>
+        </a>
+
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="extension.html">Step 1: Extension</a></li>
+          <li><a href="notion-setup.html">Step 2: Notion</a></li>
+          <li><a href="claude-setup.html">Step 3: Claude</a></li>
+          <li><a href="extension.html" class="btn btn-primary">Get Started</a></li>
+        </ul>
+
+        <button type="button" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <div class="container hero-inner" style="grid-template-columns: 1fr; text-align: center">
+        <div>
+          <p class="eyebrow">Step 3 of 3</p>
+          <h1>
+            Configure
+            <br />
+            <em style="font-style: italic; color: var(--amber)">Claude</em> for Your Search
+          </h1>
+          <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
+            Create your job search project in Claude, upload your resumes, and run the onboarding
+            prompt to configure everything in one shot.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== WHY A PROJECT ========== -->
+    <section>
+      <div class="container">
+        <div class="callout-bar reveal">
+          <p>
+            Claude Projects give Claude persistent context across conversations. Your resume rules,
+            job preferences, and configuration are available in every chat &mdash; without
+            re-explaining yourself each time. All three phases of your job search live in one
+            project.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== CREATE PROJECT ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Project Setup</p>
+        <h2 class="section-headline">
+          Set up your Claude Project.
+        </h2>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="step-number">01</div>
+            <h3 class="card-title">Go to Claude Projects</h3>
+            <p class="card-body">
+              Visit
+              <a
+                href="https://claude.ai"
+                target="_blank"
+                rel="noopener"
+                style="color: var(--amber); text-decoration: none"
+                >claude.ai</a
+              >. In the left sidebar, find
+              <strong style="color: var(--text-1)">Projects</strong> and click
+              <strong style="color: var(--text-1)">+ New Project</strong>. Name it something like
+              "Job Search 2026" or "[Your Name] &mdash; Job Search".
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">02</div>
+            <h3 class="card-title">Verify Notion is Connected</h3>
+            <p class="card-body">
+              Inside your new project, look for the integrations or connector panel. Confirm Notion
+              shows as connected. If not, go back to
+              <a href="notion-setup.html" style="color: var(--amber); text-decoration: none"
+                >Step 2 (Notion Setup)</a
+              >
+              and complete the connector authorization.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">03</div>
+            <h3 class="card-title">Upload Your Resumes</h3>
+            <p class="card-body">
+              In the project's knowledge or files section, upload your resume files. Claude accepts
+              Word (.docx), PDF, and plain text formats. Upload all resume variants you have &mdash;
+              Claude will read them to auto-configure your selection rules. If you can't upload files
+              directly, you'll paste the resume text during the onboarding prompt.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">04</div>
+            <h3 class="card-title">Run the Onboarding Prompt</h3>
+            <p class="card-body">
+              Copy the full prompt below and paste it into a new chat inside your Claude Project.
+              Claude will guide you through the rest interactively &mdash; asking questions one
+              section at a time and building your configuration document automatically.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== ONBOARDING PROMPT ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">The Prompt</p>
+        <h2 class="section-headline">Paste this into Claude.</h2>
+
+        <div class="prompt-container reveal">
+          <div class="prompt-header">
+            <span class="prompt-label">Onboarding Prompt &mdash; Paste Into Claude</span>
+            <button
+              class="copy-btn"
+              onclick="copyPrompt()"
+              id="copy-btn"
+              aria-label="Copy prompt to clipboard"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect
+                  x="5"
+                  y="5"
+                  width="9"
+                  height="9"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  fill="none"
+                />
+                <path
+                  d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+              Copy Prompt
+            </button>
+          </div>
+          <pre class="prompt-body" id="onboarding-prompt">SYSTEM SETUP — AI Job Search Workflow
+
+You are my AI job search assistant. Your job is to help me review job
+postings, select and optimize my resume for each role, and track my
+applications.
+
+We are going to set up this system together right now. Follow each phase
+in order. Tell me clearly what you are doing and what I need to do at
+each step. Wait for my confirmation before moving to the next phase.
+
+---
+
+PHASE 0: VERIFY NOTION CONNECTION
+
+Before anything else, confirm that your Notion integration is active.
+Try to read from my Job Tracker database. If you can access it, confirm
+and proceed. If not, tell me to go to claude.ai Settings > Integrations
+and connect Notion, then come back and try again.
+
+---
+
+PHASE 1: LOAD MY RESUMES
+
+I have uploaded my resume files to this project (or will paste them now).
+
+If files are already attached to this project:
+  1. Read all resume files
+  2. Identify how many resumes you found and what category each appears
+     to be (Director, Senior Manager, VP, etc.) based on the content
+  3. Show me a summary: file name → inferred category
+  4. Ask me to confirm or correct before continuing
+
+If no files are attached:
+  Tell me: "Please paste each resume now, one at a time. Start each with
+  a label like 'RESUME 1 — Director' so I can keep them separate."
+  Wait for me to paste all resumes before continuing.
+
+Once resumes are confirmed, create a row in my Notion Resume Repository
+for each one:
+  - Resume Name: descriptive name (e.g. "Director of Engineering - Base")
+  - Category: your best match from the options
+  - Version: "v1.0"
+  - Resume Content: full text of the resume
+  - Active: "Yes"
+  - Last Updated: today's date
+
+Confirm how many rows were created before moving on.
+
+---
+
+PHASE 2: BUILD MY RESUME SELECTION RULES
+
+Now extract everything you can from the resumes automatically, then
+ask me questions ONE SECTION AT A TIME. Do not move to the next section
+until I have answered the current one.
+
+AUTO-EXTRACT FROM RESUMES (show me a summary to confirm):
+- Full name and contact information
+- Most recent job title and company
+- Total years of experience (engineering and management separately)
+- Largest team managed and at what reporting level
+- All employers in order with approximate dates
+- Key accomplishments that include metrics
+- Technical skills (languages, cloud platforms, frameworks, tools)
+- What differentiates each resume variant from the others
+
+After showing the summary, ask me to confirm it is accurate. Correct
+anything I flag before continuing.
+
+---
+
+SECTION 1 — TARGETS & COMPENSATION
+Ask me:
+1. What is your minimum acceptable base salary?
+2. What role levels are you actively targeting?
+3. Any role types to explicitly avoid?
+4. Preferred company stage and size?
+5. Any specific companies to target or avoid?
+
+---
+
+SECTION 2 — LOCATION & WORK ARRANGEMENT
+Ask me:
+6. What locations and work arrangements are you open to?
+7. Any you would consider but want flagged as non-ideal?
+
+---
+
+SECTION 3 — DOMAIN & INDUSTRY PREFERENCES
+Based on my resume, suggest 5-8 industries or domains that match
+my background. Ask me to react: which interest me most, which to
+avoid, and whether there are any I want to add.
+
+---
+
+SECTION 4 — RESUME SELECTION LOGIC
+For each resume variant I uploaded, propose a use-when rule based
+on the content. Cover:
+  - Minimum years of management experience the JD signals
+  - Team size and org scope
+  - Reporting level
+  - Primary emphasis (strategic, technical, people leadership)
+Ask me to confirm, adjust, or add rules for each variant.
+Then ask: if two resumes both qualify for a role, how do we break the tie?
+
+---
+
+SECTION 5 — OPTIMIZATION SCOPE
+Confirm which of these are in scope when tailoring a resume:
+  - Reorder or re-emphasize existing bullet points
+  - Rewrite bullets to mirror JD language (same facts, better framing)
+  - Adjust the summary or objective section
+  - Add or remove skills from the skills section
+  - Suggest sections to cut when length is tight
+
+Then ask: What is strictly off limits?
+(e.g. never fabricate experience, never change job titles at previous
+employers, never invent metrics)
+
+---
+
+SECTION 6 — SIDE PROJECTS & ADDITIONAL WORK
+Ask me:
+Do you have any side projects, open source work, freelance, or consulting
+engagements to optionally include on your resume?
+For each, I need:
+  - Name and one-sentence description
+  - Tech stack (if technical)
+  - Live URL or GitHub link
+  - When to include: always, only for certain role types, never by default
+
+---
+
+SECTION 7 — FIT ASSESSMENT FRAMEWORK
+Based on everything above, draft a Green / Yellow / Red flag system:
+  Green: strong fit — proceed and optimize resume
+  Yellow: partial fit — proceed with caveats noted
+  Red: recommend skip — do not optimize unless overridden
+
+Ask me to review and adjust each tier's criteria.
+Then ask: if a role is Red, should you still generate a resume if I
+ask for one anyway, or always decline?
+
+---
+
+SECTION 8 — FORMATTING STANDARDS
+Ask me:
+- Maximum resume length?
+- Preferred output format? (Markdown, Word doc, plain text)
+- File naming convention?
+- Any sections to always include or exclude?
+- Any specific formatting rules?
+
+---
+
+AFTER ALL SECTIONS ARE COMPLETE:
+
+1. Generate a complete Resume Selection Rules document with:
+   - Candidate Profile Summary
+   - Target Role Criteria
+   - Resume Variants and Selection Logic
+   - Resume Generation Protocol (step-by-step)
+   - Optimization Scope and Guardrails
+   - Side Projects Reference
+   - Key Accomplishments Table (tagged by best-fit role type)
+   - Fit Assessment Framework (Green / Yellow / Red)
+   - Formatting Standards
+   - Role-Specific Framing Notes (one section per domain)
+
+2. Save it to my Notion Resume Repository as a new row:
+   - Resume Name: "Resume Selection Rules v1.0"
+   - Category: "Other"
+   - Active: "Yes"
+   - Notes: "Master configuration — AI job review workflow"
+   - Resume Content: full document text
+
+3. Show me a setup completion summary:
+   - Resumes loaded: [count and names]
+   - Selection rules: saved to Notion
+   - Notion databases: confirmed accessible
+
+4. Tell me: "To process your first job, open your Job Tracker in Notion,
+   paste a job description into the Raw JD field of any row, and set the
+   Status to Bookmarked. Then come back here and say: Review bookmarked
+   jobs — I will handle the rest."</pre>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== WHAT HAPPENS NEXT ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Daily Use</p>
+        <h2 class="section-headline">What happens next.</h2>
+
+        <div class="grid-3">
+          <div class="card reveal">
+            <h3 class="card-title">Daily Use</h3>
+            <p class="card-body">
+              When you find a job, click the extension to save it. Set Status to Bookmarked. Come to
+              Claude and say "Review bookmarked jobs." Done.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3 class="card-title">Before Each Interview</h3>
+            <p class="card-body">
+              Create a new Claude Project for the role. Run the Interview Prep prompt. Claude
+              generates your cheat sheet, company research, and mock interview in one session.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3 class="card-title">When Your Resume Changes</h3>
+            <p class="card-body">
+              Update the row in Notion's Resume Repository and tell Claude in your project: "I've
+              updated my resume &mdash; reload it." The new version is used for all future reviews.
+            </p>
+          </div>
+        </div>
+
+        <div class="completion-callout reveal">
+          <p>
+            You're all set. Your AI job search system is ready.<br />
+            Questions or issues?
+            <a href="mailto:keith@kssoftware.net">keith@kssoftware.net</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PAGE NAV ========== -->
+    <section>
+      <div class="container">
+        <div class="page-nav reveal">
+          <a href="notion-setup.html">&larr; Step 2 &mdash; Notion Setup</a>
+          <a
+            href="https://www.notion.so"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+          >
+            View your Job Tracker in Notion &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; 2026 KSSoftware &nbsp;&middot;&nbsp;
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          &nbsp;&middot;&nbsp; Built for small business
+        </p>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+      function copyPrompt() {
+        var text = document.getElementById('onboarding-prompt').textContent;
+        navigator.clipboard.writeText(text).then(function () {
+          var btn = document.getElementById('copy-btn');
+          btn.classList.add('copied');
+          btn.innerHTML =
+            '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Copied!';
+          setTimeout(function () {
+            btn.classList.remove('copied');
+            btn.innerHTML =
+              '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg> Copy Prompt';
+          }, 2500);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,6 +1,9 @@
 # OS
 .DS_Store
 Thumbs.db
+**/.DS_Store
+Desktop.ini
+ehthumbs.db
 
 # Node/JS
 node_modules/
@@ -17,21 +20,34 @@ logs/
 # Env/Secrets
 .env
 .env.*
+*.pem
+*.key
 
 # Build outputs
 dist/
 build/
 coverage/
+.cache/
+tmp/
 
-# Editor
+# Editor / IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
-# Mac metadata anywhere
-**/.DS_Store
+# Inventory / generated docs (dev-only)
+website-inventory.md
 
 # Ignore copied site snapshot directory
 keith-smith-engineering.com/
+site_copy/
 
 # Python virtual env
 .venv/
+__pycache__/
+
+# Playwright
+test-results/
+playwright-report/
