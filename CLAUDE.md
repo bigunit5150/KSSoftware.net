@@ -8,7 +8,7 @@ Static website for **kssoftware.net** — Keith Smith's AI consulting site for s
 - `about.html` — Professional background page (noindex, direct-link only)
 - `projects/index.html` — Projects listing (LLM Gateway, AI Job Search System)
 - `projects/job-tracker.html` — Job Tracker Chrome extension detail page
-- `job-search-ai/` — AI Job Search System onboarding (4 pages)
+- `CareerCopilot/` — AI Job Search System onboarding (4 pages)
   - `index.html` — Overview with flow diagram and setup navigation
   - `extension.html` — Step 1: Chrome extension install
   - `notion-setup.html` — Step 2: Notion database setup + Claude connector
