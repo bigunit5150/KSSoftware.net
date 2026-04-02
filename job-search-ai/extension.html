@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Step 1: Install the Chrome Extension — AI Job Search | KSSoftware</title>
+    <meta
+      name="description"
+      content="Install the Job Post Tracker Chrome extension and connect it to Notion. Save job postings from any job board in one click."
+    />
+    <link rel="canonical" href="https://kssoftware.net/job-search-ai/extension.html" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .config-field {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--card-radius);
+        padding: 28px;
+        margin-bottom: 20px;
+      }
+      .config-field h4 {
+        font-family: var(--font-display);
+        font-weight: 300;
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+      .config-field p {
+        font-size: 0.9rem;
+        color: var(--text-2);
+        line-height: 1.6;
+        margin-bottom: 12px;
+      }
+      .config-example {
+        font-family: 'Courier New', monospace;
+        background: var(--bg);
+        border: 1px solid var(--border-mid);
+        border-radius: var(--radius-sm);
+        padding: 8px 12px;
+        color: var(--amber-light);
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+      }
+      .board-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--card-radius);
+        padding: 16px 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .board-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--amber);
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .board-name {
+        font-size: 0.9rem;
+        color: var(--text-1);
+        font-weight: 400;
+      }
+      .page-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+      }
+      .page-nav a {
+        color: var(--amber);
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== NAV ========== -->
+    <nav id="site-nav">
+      <div class="container nav-inner">
+        <a href="../index.html" class="logo-lockup" aria-label="KSSoftware home">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M18 2L34 18L18 34L2 18Z" stroke="#e8a230" stroke-width="1.8" fill="none" />
+            <path
+              d="M13 22 Q18 11 23 22"
+              stroke="#e8a230"
+              stroke-width="1.6"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path
+              d="M10 25 Q18 6 26 25"
+              stroke="#e8a230"
+              stroke-width="1"
+              fill="none"
+              stroke-linecap="round"
+              opacity="0.45"
+            />
+            <circle cx="18" cy="22.5" r="2" fill="#e8a230" />
+          </svg>
+          <span class="logo-wordmark">KSSoftware</span>
+        </a>
+
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="extension.html">Step 1: Extension</a></li>
+          <li><a href="notion-setup.html">Step 2: Notion</a></li>
+          <li><a href="claude-setup.html">Step 3: Claude</a></li>
+          <li><a href="extension.html" class="btn btn-primary">Get Started</a></li>
+        </ul>
+
+        <button type="button" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <div class="container hero-inner" style="grid-template-columns: 1fr; text-align: center">
+        <div>
+          <p class="eyebrow">Step 1 of 3</p>
+          <h1>
+            Install the
+            <br />
+            Chrome <em style="font-style: italic; color: var(--amber)">Extension</em>
+          </h1>
+          <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
+            Get the Job Post Tracker extension installed and connected to Notion in under 5 minutes.
+          </p>
+          <div class="hero-cta reveal" style="justify-content: center">
+            <!-- TODO: add CWS URL -->
+            <a href="#" class="btn btn-primary">Install from Chrome Web Store &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== HOW TO INSTALL ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Installation</p>
+        <h2 class="section-headline">
+          Up and running
+          <br />
+          in four steps.
+        </h2>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="step-number">01</div>
+            <h3 class="card-title">Install from Chrome Web Store</h3>
+            <p class="card-body">
+              Click the button above or search "Job Post Tracker" in the Chrome Web Store. Click
+              "Add to Chrome" and confirm the installation.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">02</div>
+            <h3 class="card-title">Pin the Extension</h3>
+            <p class="card-body">
+              After install, click the puzzle piece icon in your Chrome toolbar. Find "Job Post
+              Tracker" and click the pin icon so it's always visible.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">03</div>
+            <h3 class="card-title">Connect Your Notion Account</h3>
+            <p class="card-body">
+              Click the extension icon for the first time. You'll be prompted to enter your Notion
+              Integration Token and the ID of your Job Tracker database. Complete
+              <a href="notion-setup.html" style="color: var(--amber); text-decoration: none"
+                >Notion setup (Step 2)</a
+              >
+              first if you haven't already &mdash; you'll need those values.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">04</div>
+            <h3 class="card-title">Save Your First Job</h3>
+            <p class="card-body">
+              Navigate to any job posting on LinkedIn, Greenhouse, Lever, or any job board. Click the
+              extension icon. The job title, company, and full job description are saved to Notion
+              automatically.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== CONFIGURATION ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Configuration</p>
+        <h2 class="section-headline">Two fields to fill in.</h2>
+
+        <div class="reveal" style="max-width: 680px">
+          <div class="config-field">
+            <h4>Notion Integration Token</h4>
+            <p>
+              Where to find it: Notion Settings &rarr; Connections &rarr; Develop or manage
+              integrations &rarr; New integration &rarr; copy the Internal Integration Token
+            </p>
+            <code class="config-example"
+              >secret_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code
+            >
+          </div>
+
+          <div class="config-field">
+            <h4>Notion Database ID</h4>
+            <p>
+              Where to find it: Open your Job Tracker database in Notion &rarr; copy the URL &rarr;
+              the database ID is the 32-character string before the <code>?</code>
+            </p>
+            <code class="config-example">320037c8790b80049498d26d7d85322c</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== SUPPORTED JOB BOARDS ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Compatibility</p>
+        <h2 class="section-headline">Supported job boards.</h2>
+
+        <div class="grid-4 reveal">
+          <div class="board-card">
+            <span class="board-dot"></span>
+            <span class="board-name">LinkedIn</span>
+          </div>
+          <div class="board-card">
+            <span class="board-dot"></span>
+            <span class="board-name">Greenhouse</span>
+          </div>
+          <div class="board-card">
+            <span class="board-dot"></span>
+            <span class="board-name">Lever</span>
+          </div>
+          <div class="board-card">
+            <span class="board-dot"></span>
+            <span class="board-name">Workday</span>
+          </div>
+          <div class="board-card">
+            <span class="board-dot"></span>
+            <span class="board-name">Indeed</span>
+          </div>
+          <div class="board-card">
+            <span class="board-dot"></span>
+            <span class="board-name">Glassdoor</span>
+          </div>
+          <div class="board-card">
+            <span class="board-dot"></span>
+            <span class="board-name">Company career pages</span>
+          </div>
+          <div class="board-card">
+            <span class="board-dot"></span>
+            <span class="board-name">Any page with a JD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PAGE NAV ========== -->
+    <section>
+      <div class="container">
+        <div class="page-nav reveal">
+          <a href="index.html">&larr; Overview</a>
+          <a href="notion-setup.html" class="btn btn-primary">Step 2 &mdash; Set Up Notion &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; 2026 KSSoftware &nbsp;&middot;&nbsp;
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          &nbsp;&middot;&nbsp; Built for small business
+        </p>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>
