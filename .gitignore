@@ -39,6 +39,7 @@ tmp/
 
 # Inventory / generated docs (dev-only)
 website-inventory.md
+project-context.md
 
 # Ignore copied site snapshot directory
 keith-smith-engineering.com/
