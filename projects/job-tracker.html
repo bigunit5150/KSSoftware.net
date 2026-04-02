@@ -88,8 +88,18 @@
             the role, company, location, and full job description.
           </p>
           <div class="hero-cta reveal" style="justify-content: center">
-            <a href="https://chromewebstore.google.com/detail/job-tracker-for-notion/ponffclikgodccpghpammcpjpjeojopj" class="btn btn-primary">Install from Chrome Web Store &rarr;</a>
-            <a href="https://github.com/bigunit5150/JobTrackerChromeExtension" class="btn btn-ghost">View on GitHub &rarr;</a>
+            <a
+              href="https://chromewebstore.google.com/detail/job-tracker-for-notion/ponffclikgodccpghpammcpjpjeojopj"
+              class="btn btn-primary"
+            >
+              Install from Chrome Web Store &rarr;
+            </a>
+            <a
+              href="https://github.com/bigunit5150/JobTrackerChromeExtension"
+              class="btn btn-ghost"
+            >
+              View on GitHub &rarr;
+            </a>
           </div>
           <p
             class="reveal"
@@ -227,50 +237,51 @@
 
         <div class="grid-2">
           <div class="card reveal">
-            <h3 class="card-title">Supports all major job boards</h3>
+            <h3 class="card-title">Auto-detects major ATS platforms</h3>
             <p class="card-body">
-              Built-in parsers for Greenhouse, Lever, Workday, and LinkedIn Jobs. Falls back
-              gracefully to a generic extractor for any other site.
+              Built-in parsers for Greenhouse, Lever (JSON-LD), Workday, LinkedIn, and Ashby
+              (JSON-LD). Falls back to a generic extractor for any other site.
             </p>
           </div>
 
           <div class="card reveal">
-            <h3 class="card-title">Never save the same role twice</h3>
+            <h3 class="card-title">Dual duplicate detection</h3>
             <p class="card-body">
-              When you open the extension on a posting you have already saved, the icon shows a
-              yellow ring so you know before you click.
+              Checks by URL when you open the popup, and by title + company before saving. The icon
+              shows a yellow ring when a duplicate is detected &mdash; so you know before you click.
             </p>
           </div>
 
           <div class="card reveal">
-            <h3 class="card-title">Smarter extraction with Claude</h3>
+            <h3 class="card-title">Optional Claude fallback (BYOK)</h3>
             <p class="card-body">
-              Add your own Anthropic API key to enable AI-powered extraction on job boards the
-              built-in parser doesn't fully support.
+              Add your own Anthropic API key for smarter extraction on unknown job boards. Uses
+              claude-haiku-4-5-20251001. Falls back silently if no key is configured.
             </p>
           </div>
 
           <div class="card reveal">
-            <h3 class="card-title">Completely private by design</h3>
+            <h3 class="card-title">No backend, completely private</h3>
             <p class="card-body">
-              No accounts, no servers, no tracking. You supply your own Notion integration token and
-              everything goes directly to your workspace.
+              Manifest V3 Chrome extension with no hosted infrastructure. You supply your own Notion
+              token &mdash; data goes directly from your browser to Notion. Nothing passes through
+              any server.
             </p>
           </div>
 
           <div class="card reveal">
-            <h3 class="card-title">Always know what's happening</h3>
+            <h3 class="card-title">Five icon states at a glance</h3>
             <p class="card-body">
-              The toolbar icon communicates status at a glance: idle, capturing, success, error, and
-              duplicate — no need to open the popup.
+              The toolbar icon communicates status instantly: idle, capturing, success (green),
+              error (red), and duplicate (yellow) &mdash; no need to open the popup.
             </p>
           </div>
 
           <div class="card reveal">
-            <h3 class="card-title">Pipeline dashboard included</h3>
+            <h3 class="card-title">Captures full posting data</h3>
             <p class="card-body">
-              A companion Notion template gives you a live pipeline view, weekly goal tracking, and
-              a status-filtered table of every role you are tracking.
+              Saves Role Title, Company, Job URL, Location, Job Type, Salary Range, ATS Source, Date
+              Added, Raw JD, and sets Status to "Bookmarked" &mdash; ready for AI review.
             </p>
           </div>
         </div>
@@ -389,7 +400,11 @@
             </li>
           </ul>
 
-          <a href="https://ribbon-punishment-423.notion.site/Job-Search-Dashboard-32b037c8790b80f1a3e8c5a95e140dff" class="btn btn-ghost" style="margin-top: 32px">
+          <a
+            href="https://ribbon-punishment-423.notion.site/Job-Search-Dashboard-32b037c8790b80f1a3e8c5a95e140dff"
+            class="btn btn-ghost"
+            style="margin-top: 32px"
+          >
             Duplicate the Notion template &rarr;
           </a>
         </div>

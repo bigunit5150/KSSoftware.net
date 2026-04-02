@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Step 2: Set Up Notion — AI Job Search | KSSoftware</title>
+    <title>Step 2: Set Up Notion — CareerPilot | KSSoftware</title>
     <meta
       name="description"
-      content="Create the three Notion databases that power your AI job search system. Job Tracker, Resume Repository, and Interview Prep Hub."
+      content="Create the three Notion databases that power CareerPilot. Job Tracker, Resume Repository, and Interview Prep Hub."
     />
     <link rel="canonical" href="https://kssoftware.net/job-search-ai/notion-setup.html" />
 
@@ -243,11 +243,12 @@
           <h1>
             Set Up Your
             <br />
-            Notion <em style="font-style: italic; color: var(--amber)">Workspace</em>
+            Notion
+            <em style="font-style: italic; color: var(--amber)">Workspace</em>
           </h1>
           <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
-            Create the three databases that power your job search system. This takes about 10 minutes
-            and only needs to be done once.
+            Create the three databases that power your job search system. This takes about 10
+            minutes and only needs to be done once.
           </p>
         </div>
       </div>
@@ -261,11 +262,11 @@
         <div class="prereq-box reveal">
           Before starting this step, make sure you have a Notion account and have installed the
           Chrome extension from
-          <a href="extension.html">Step 1</a>.
-          Don't have a Notion account?
-          <a href="https://www.notion.so/signup" target="_blank" rel="noopener"
-            >Create a free Notion account &rarr;</a
-          >
+          <a href="extension.html">Step 1</a>
+          . Don't have a Notion account?
+          <a href="https://www.notion.so/signup" target="_blank" rel="noopener">
+            Create a free Notion account &rarr;
+          </a>
         </div>
 
         <!-- ========== DATABASES ========== -->
@@ -298,8 +299,15 @@
             </p>
             <ol>
               <li>Open Notion and navigate to the page where you want your job search hub</li>
-              <li>Type <strong>/database</strong> and select "Table &mdash; Full page"</li>
-              <li>Name it exactly: <strong>Job Tracker</strong></li>
+              <li>
+                Type
+                <strong>/database</strong>
+                and select "Table &mdash; Full page"
+              </li>
+              <li>
+                Name it exactly:
+                <strong>Job Tracker</strong>
+              </li>
               <li>Add the following properties:</li>
             </ol>
             <table class="field-table">
@@ -310,28 +318,74 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Role Title</td><td>Title (default)</td></tr>
-                <tr><td>Company</td><td>Text</td></tr>
-                <tr><td>Job URL</td><td>URL</td></tr>
-                <tr><td>Raw JD</td><td>Text</td></tr>
-                <tr><td>Status</td><td>Select</td></tr>
-                <tr><td>AI Notes</td><td>Text</td></tr>
-                <tr><td>Resume</td><td>Text</td></tr>
-                <tr><td>Location</td><td>Text</td></tr>
-                <tr><td>Job Type</td><td>Select</td></tr>
-                <tr><td>Salary Range</td><td>Text</td></tr>
-                <tr><td>Date Added</td><td>Date</td></tr>
-                <tr><td>Date Applied</td><td>Date</td></tr>
-                <tr><td>ATS Source</td><td>Text</td></tr>
-                <tr><td>Notes</td><td>Text</td></tr>
+                <tr>
+                  <td>Role Title</td>
+                  <td>Title (default)</td>
+                </tr>
+                <tr>
+                  <td>Company</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Job URL</td>
+                  <td>URL</td>
+                </tr>
+                <tr>
+                  <td>Raw JD</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>Select</td>
+                </tr>
+                <tr>
+                  <td>AI Notes</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Resume</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Location</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Job Type</td>
+                  <td>Select</td>
+                </tr>
+                <tr>
+                  <td>Salary Range</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Date Added</td>
+                  <td>Date</td>
+                </tr>
+                <tr>
+                  <td>Date Applied</td>
+                  <td>Date</td>
+                </tr>
+                <tr>
+                  <td>ATS Source</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Notes</td>
+                  <td>Text</td>
+                </tr>
               </tbody>
             </table>
             <p style="margin-top: 12px">
-              For the <strong>Status</strong> select field, add these options: Bookmarked, AI
-              Reviewed, AI Reviewed - Skip, Applying, Applied, Interviewing, Offer, Closed
+              For the
+              <strong>Status</strong>
+              select field, add these options: Bookmarked, AI Reviewed, AI Reviewed - Skip,
+              Applying, Applied, Interviewing, Offer, Closed
             </p>
             <p>
-              For the <strong>Job Type</strong> select field, add: Remote, Hybrid, Onsite
+              For the
+              <strong>Job Type</strong>
+              select field, add: Remote, Hybrid, Onsite
             </p>
           </div>
         </details>
@@ -344,12 +398,15 @@
           <div class="details-body">
             <span class="badge" style="margin-top: 0; margin-bottom: 12px">Required</span>
             <p>
-              Stores all your resume variants and selection rules. Claude reads from this database to
-              pick the right resume for each role.
+              Stores all your resume variants and selection rules. Claude reads from this database
+              to pick the right resume for each role.
             </p>
             <ol>
               <li>Create another full-page table database in the same workspace</li>
-              <li>Name it exactly: <strong>Resume Repository</strong></li>
+              <li>
+                Name it exactly:
+                <strong>Resume Repository</strong>
+              </li>
               <li>Add the following properties:</li>
             </ol>
             <table class="field-table">
@@ -360,20 +417,44 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Resume Name</td><td>Title</td></tr>
-                <tr><td>Category</td><td>Select</td></tr>
-                <tr><td>Version</td><td>Text</td></tr>
-                <tr><td>Last Updated</td><td>Date</td></tr>
-                <tr><td>Resume Content</td><td>Text</td></tr>
-                <tr><td>Active</td><td>Select</td></tr>
-                <tr><td>Notes</td><td>Text</td></tr>
+                <tr>
+                  <td>Resume Name</td>
+                  <td>Title</td>
+                </tr>
+                <tr>
+                  <td>Category</td>
+                  <td>Select</td>
+                </tr>
+                <tr>
+                  <td>Version</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Last Updated</td>
+                  <td>Date</td>
+                </tr>
+                <tr>
+                  <td>Resume Content</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Active</td>
+                  <td>Select</td>
+                </tr>
+                <tr>
+                  <td>Notes</td>
+                  <td>Text</td>
+                </tr>
               </tbody>
             </table>
             <p style="margin-top: 12px">
-              <strong>Category</strong> options: Director, Senior Manager, VP, AI/Technical
-              Consulting, Other
+              <strong>Category</strong>
+              options: Director, Senior Manager, VP, AI/Technical Consulting, Other
             </p>
-            <p><strong>Active</strong> options: Yes, No</p>
+            <p>
+              <strong>Active</strong>
+              options: Yes, No
+            </p>
           </div>
         </details>
 
@@ -390,7 +471,10 @@
             </p>
             <ol>
               <li>Create another full-page table database in the same workspace</li>
-              <li>Name it exactly: <strong>Interview Prep Hub</strong></li>
+              <li>
+                Name it exactly:
+                <strong>Interview Prep Hub</strong>
+              </li>
               <li>Add the following properties:</li>
             </ol>
             <table class="field-table">
@@ -401,31 +485,80 @@
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Opportunity</td><td>Title</td></tr>
-                <tr><td>Company</td><td>Text</td></tr>
-                <tr><td>Role Title</td><td>Text</td></tr>
-                <tr><td>Status</td><td>Select</td></tr>
-                <tr><td>Claude Project URL</td><td>URL</td></tr>
-                <tr><td>Job Tracker URL</td><td>URL</td></tr>
-                <tr><td>Resume Used</td><td>Text</td></tr>
-                <tr><td>Interview Round</td><td>Select</td></tr>
-                <tr><td>Interview Date</td><td>Date</td></tr>
-                <tr><td>Cheat Sheet</td><td>Text</td></tr>
-                <tr><td>Company Research</td><td>Text</td></tr>
-                <tr><td>Key Talking Points</td><td>Text</td></tr>
-                <tr><td>Questions To Ask</td><td>Text</td></tr>
-                <tr><td>Mock Interview Notes</td><td>Text</td></tr>
-                <tr><td>Post Interview Notes</td><td>Text</td></tr>
-                <tr><td>AI Coaching Notes</td><td>Text</td></tr>
+                <tr>
+                  <td>Opportunity</td>
+                  <td>Title</td>
+                </tr>
+                <tr>
+                  <td>Company</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Role Title</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>Select</td>
+                </tr>
+                <tr>
+                  <td>Claude Project URL</td>
+                  <td>URL</td>
+                </tr>
+                <tr>
+                  <td>Job Tracker URL</td>
+                  <td>URL</td>
+                </tr>
+                <tr>
+                  <td>Resume Used</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Interview Round</td>
+                  <td>Select</td>
+                </tr>
+                <tr>
+                  <td>Interview Date</td>
+                  <td>Date</td>
+                </tr>
+                <tr>
+                  <td>Cheat Sheet</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Company Research</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Key Talking Points</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Questions To Ask</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Mock Interview Notes</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>Post Interview Notes</td>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <td>AI Coaching Notes</td>
+                  <td>Text</td>
+                </tr>
               </tbody>
             </table>
             <p style="margin-top: 12px">
-              <strong>Status</strong> options: Active Prep, Interview Scheduled, Interview Complete,
-              Offer, Closed
+              <strong>Status</strong>
+              options: Active Prep, Interview Scheduled, Interview Complete, Offer, Closed
             </p>
             <p>
-              <strong>Interview Round</strong> options: Phone Screen, Recruiter Screen, Hiring
-              Manager, Panel, Final Round, Offer Stage
+              <strong>Interview Round</strong>
+              options: Phone Screen, Recruiter Screen, Hiring Manager, Panel, Final Round, Offer
+              Stage
             </p>
           </div>
         </details>
@@ -450,7 +583,8 @@
           "
         >
           Claude needs permission to read and write your Notion databases. This is a one-time step
-          done inside your Claude account settings.
+          done inside your Claude account settings. This enables the official Notion MCP connector
+          used by Claude Projects and Claude Code.
         </p>
 
         <div class="steps-connector reveal">
@@ -465,10 +599,12 @@
                   target="_blank"
                   rel="noopener"
                   style="color: var(--amber); text-decoration: none"
-                  >claude.ai</a
                 >
+                  claude.ai
+                </a>
                 and sign in. Click your profile icon in the top-right corner. Select
-                <strong style="color: var(--text-1)">Settings</strong> from the dropdown menu.
+                <strong style="color: var(--text-1)">Settings</strong>
+                from the dropdown menu.
               </p>
             </div>
           </div>
@@ -479,8 +615,8 @@
               <h3 class="card-title">Navigate to Integrations</h3>
               <p class="card-body">
                 In the Settings sidebar, click
-                <strong style="color: var(--text-1)">Integrations</strong>. You'll see a list of
-                available connectors.
+                <strong style="color: var(--text-1)">Integrations</strong>
+                . You'll see a list of available connectors.
               </p>
             </div>
           </div>
@@ -490,9 +626,11 @@
               <div class="step-number">03</div>
               <h3 class="card-title">Connect Notion</h3>
               <p class="card-body">
-                Find <strong style="color: var(--text-1)">Notion</strong> in the integrations list
-                and click <strong style="color: var(--text-1)">Connect</strong>. You'll be
-                redirected to Notion to authorize access.
+                Find
+                <strong style="color: var(--text-1)">Notion</strong>
+                in the integrations list and click
+                <strong style="color: var(--text-1)">Connect</strong>
+                . You'll be redirected to Notion to authorize access.
               </p>
             </div>
           </div>
@@ -502,10 +640,10 @@
               <div class="step-number">04</div>
               <h3 class="card-title">Authorize Your Workspace</h3>
               <p class="card-body">
-                In the Notion authorization screen, select the workspace that contains your three job
-                search databases and click
-                <strong style="color: var(--text-1)">Allow access</strong>. You'll be redirected
-                back to Claude automatically.
+                In the Notion authorization screen, select the workspace that contains your three
+                job search databases and click
+                <strong style="color: var(--text-1)">Allow access</strong>
+                . You'll be redirected back to Claude automatically.
               </p>
             </div>
           </div>
@@ -516,8 +654,8 @@
               <h3 class="card-title">Verify the Connection</h3>
               <p class="card-body">
                 Back in Claude, the Notion integration should now show as
-                <strong style="color: var(--text-1)">Connected</strong>. You're ready to move to
-                Step 3.
+                <strong style="color: var(--text-1)">Connected</strong>
+                . You're ready to move to Step 3.
               </p>
             </div>
           </div>
@@ -550,12 +688,7 @@
           <div class="card">
             <h3 class="card-title">Integration Token</h3>
             <ol
-              style="
-                padding-left: 20px;
-                color: var(--text-2);
-                font-size: 0.9rem;
-                line-height: 1.8;
-              "
+              style="padding-left: 20px; color: var(--text-2); font-size: 0.9rem; line-height: 1.8"
             >
               <li>
                 Go to
@@ -564,15 +697,18 @@
                   target="_blank"
                   rel="noopener"
                   style="color: var(--amber); text-decoration: none"
-                  >notion.so/profile/integrations</a
                 >
+                  notion.so/profile/integrations
+                </a>
               </li>
               <li>Click "New integration" (or find your existing one)</li>
               <li>Give it a name like "Job Search AI"</li>
               <li>
-                Copy the <strong style="color: var(--text-1)">Internal Integration Token</strong
-                ><br />
-                It starts with <code class="config-example">secret_</code>
+                Copy the
+                <strong style="color: var(--text-1)">Internal Integration Token</strong>
+                <br />
+                It starts with
+                <code class="config-example">secret_</code>
               </li>
               <li>Paste it into the Chrome extension settings</li>
             </ol>
@@ -581,21 +717,20 @@
           <div class="card">
             <h3 class="card-title">Database ID</h3>
             <ol
-              style="
-                padding-left: 20px;
-                color: var(--text-2);
-                font-size: 0.9rem;
-                line-height: 1.8;
-              "
+              style="padding-left: 20px; color: var(--text-2); font-size: 0.9rem; line-height: 1.8"
             >
               <li>
-                Open your <strong style="color: var(--text-1)">Job Tracker</strong> database in
-                Notion (full page view)
+                Open your
+                <strong style="color: var(--text-1)">Job Tracker</strong>
+                database in Notion (full page view)
               </li>
               <li>Copy the URL from your browser address bar</li>
               <li>
-                The database ID is the 32-character string in the URL:<br />
-                notion.so/<code class="config-example">320037c8790b80049498d26d7d85322c</code>?v=...
+                The database ID is the 32-character string in the URL:
+                <br />
+                notion.so/
+                <code class="config-example">320037c8790b80049498d26d7d85322c</code>
+                ?v=...
               </li>
               <li>Paste it into the Chrome extension settings</li>
             </ol>
@@ -603,8 +738,9 @@
         </div>
 
         <div class="warning-callout reveal">
-          <strong>Keep your Integration Token private.</strong> It gives write access to your Notion
-          workspace. Never share it or commit it to a public repository.
+          <strong>Keep your Integration Token private.</strong>
+          It gives write access to your Notion workspace. Never share it or commit it to a public
+          repository.
         </div>
       </div>
     </section>
@@ -614,9 +750,9 @@
       <div class="container">
         <div class="page-nav reveal">
           <a href="extension.html">&larr; Step 1 &mdash; Extension</a>
-          <a href="claude-setup.html" class="btn btn-primary"
-            >Step 3 &mdash; Configure Claude &rarr;</a
-          >
+          <a href="claude-setup.html" class="btn btn-primary">
+            Step 3 &mdash; Configure Claude &rarr;
+          </a>
         </div>
       </div>
     </section>

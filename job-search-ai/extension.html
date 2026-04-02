@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Step 1: Install the Chrome Extension — AI Job Search | KSSoftware</title>
+    <title>Step 1: Install the Chrome Extension — CareerPilot | KSSoftware</title>
     <meta
       name="description"
       content="Install the Job Post Tracker Chrome extension and connect it to Notion. Save job postings from any job board in one click."
@@ -142,14 +142,21 @@
           <h1>
             Install the
             <br />
-            Chrome <em style="font-style: italic; color: var(--amber)">Extension</em>
+            Chrome
+            <em style="font-style: italic; color: var(--amber)">Extension</em>
           </h1>
           <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
             Get the Job Post Tracker extension installed and connected to Notion in under 5 minutes.
           </p>
           <div class="hero-cta reveal" style="justify-content: center">
-            <!-- TODO: add CWS URL -->
-            <a href="#" class="btn btn-primary">Install from Chrome Web Store &rarr;</a>
+            <a
+              href="https://chromewebstore.google.com/detail/job-tracker-for-notion/ponffclikgodccpghpammcpjpjeojopj"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-primary"
+            >
+              Install from Chrome Web Store &rarr;
+            </a>
           </div>
         </div>
       </div>
@@ -192,9 +199,9 @@
             <p class="card-body">
               Click the extension icon for the first time. You'll be prompted to enter your Notion
               Integration Token and the ID of your Job Tracker database. Complete
-              <a href="notion-setup.html" style="color: var(--amber); text-decoration: none"
-                >Notion setup (Step 2)</a
-              >
+              <a href="notion-setup.html" style="color: var(--amber); text-decoration: none">
+                Notion setup (Step 2)
+              </a>
               first if you haven't already &mdash; you'll need those values.
             </p>
           </div>
@@ -203,9 +210,9 @@
             <div class="step-number">04</div>
             <h3 class="card-title">Save Your First Job</h3>
             <p class="card-body">
-              Navigate to any job posting on LinkedIn, Greenhouse, Lever, or any job board. Click the
-              extension icon. The job title, company, and full job description are saved to Notion
-              automatically.
+              Navigate to any job posting on LinkedIn, Greenhouse, Lever, or any job board. Click
+              the extension icon. The job title, company, and full job description are saved to
+              Notion automatically.
             </p>
           </div>
         </div>
@@ -227,16 +234,17 @@
               Where to find it: Notion Settings &rarr; Connections &rarr; Develop or manage
               integrations &rarr; New integration &rarr; copy the Internal Integration Token
             </p>
-            <code class="config-example"
-              >secret_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code
-            >
+            <code class="config-example">
+              secret_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+            </code>
           </div>
 
           <div class="config-field">
             <h4>Notion Database ID</h4>
             <p>
               Where to find it: Open your Job Tracker database in Notion &rarr; copy the URL &rarr;
-              the database ID is the 32-character string before the <code>?</code>
+              the database ID is the 32-character string before the
+              <code>?</code>
             </p>
             <code class="config-example">320037c8790b80049498d26d7d85322c</code>
           </div>
@@ -255,15 +263,11 @@
         <div class="grid-4 reveal">
           <div class="board-card">
             <span class="board-dot"></span>
-            <span class="board-name">LinkedIn</span>
-          </div>
-          <div class="board-card">
-            <span class="board-dot"></span>
             <span class="board-name">Greenhouse</span>
           </div>
           <div class="board-card">
             <span class="board-dot"></span>
-            <span class="board-name">Lever</span>
+            <span class="board-name">Lever (JSON-LD)</span>
           </div>
           <div class="board-card">
             <span class="board-dot"></span>
@@ -271,21 +275,33 @@
           </div>
           <div class="board-card">
             <span class="board-dot"></span>
-            <span class="board-name">Indeed</span>
+            <span class="board-name">LinkedIn</span>
           </div>
           <div class="board-card">
             <span class="board-dot"></span>
-            <span class="board-name">Glassdoor</span>
+            <span class="board-name">Ashby (JSON-LD)</span>
           </div>
           <div class="board-card">
             <span class="board-dot"></span>
-            <span class="board-name">Company career pages</span>
-          </div>
-          <div class="board-card">
-            <span class="board-dot"></span>
-            <span class="board-name">Any page with a JD</span>
+            <span class="board-name">Generic fallback</span>
           </div>
         </div>
+
+        <p
+          class="reveal"
+          style="
+            font-size: 0.9rem;
+            color: var(--text-2);
+            max-width: 680px;
+            line-height: 1.7;
+            margin-top: 24px;
+          "
+        >
+          For job boards without a dedicated parser, the extension uses a generic extractor. You can
+          optionally add your own Anthropic API key (BYOK) in the extension settings to enable
+          Claude-powered extraction on unknown boards. The key is never sent to any server other
+          than Anthropic's API.
+        </p>
       </div>
     </section>
 
@@ -294,7 +310,9 @@
       <div class="container">
         <div class="page-nav reveal">
           <a href="index.html">&larr; Overview</a>
-          <a href="notion-setup.html" class="btn btn-primary">Step 2 &mdash; Set Up Notion &rarr;</a>
+          <a href="notion-setup.html" class="btn btn-primary">
+            Step 2 &mdash; Set Up Notion &rarr;
+          </a>
         </div>
       </div>
     </section>

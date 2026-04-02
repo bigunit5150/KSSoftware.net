@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Step 3: Configure Claude — AI Job Search | KSSoftware</title>
+    <title>Step 3: Configure Claude — CareerPilot | KSSoftware</title>
     <meta
       name="description"
-      content="Create your Claude Project, upload resumes, and run the onboarding prompt to configure your AI job search system."
+      content="Create your Claude Project, upload resumes, and run the CareerPilot onboarding prompt to generate your Resume Selection Rules."
     />
     <link rel="canonical" href="https://kssoftware.net/job-search-ai/claude-setup.html" />
 
@@ -179,7 +179,8 @@
           <h1>
             Configure
             <br />
-            <em style="font-style: italic; color: var(--amber)">Claude</em> for Your Search
+            <em style="font-style: italic; color: var(--amber)">Claude</em>
+            for Your Search
           </h1>
           <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
             Create your job search project in Claude, upload your resumes, and run the onboarding
@@ -211,9 +212,7 @@
     <section>
       <div class="container">
         <p class="eyebrow">Project Setup</p>
-        <h2 class="section-headline">
-          Set up your Claude Project.
-        </h2>
+        <h2 class="section-headline">Set up your Claude Project.</h2>
 
         <div class="grid-2">
           <div class="card reveal">
@@ -226,11 +225,14 @@
                 target="_blank"
                 rel="noopener"
                 style="color: var(--amber); text-decoration: none"
-                >claude.ai</a
-              >. In the left sidebar, find
-              <strong style="color: var(--text-1)">Projects</strong> and click
-              <strong style="color: var(--text-1)">+ New Project</strong>. Name it something like
-              "Job Search 2026" or "[Your Name] &mdash; Job Search".
+              >
+                claude.ai
+              </a>
+              . In the left sidebar, find
+              <strong style="color: var(--text-1)">Projects</strong>
+              and click
+              <strong style="color: var(--text-1)">+ New Project</strong>
+              . Name it something like "Job Search 2026" or "[Your Name] &mdash; Job Search".
             </p>
           </div>
 
@@ -240,9 +242,9 @@
             <p class="card-body">
               Inside your new project, look for the integrations or connector panel. Confirm Notion
               shows as connected. If not, go back to
-              <a href="notion-setup.html" style="color: var(--amber); text-decoration: none"
-                >Step 2 (Notion Setup)</a
-              >
+              <a href="notion-setup.html" style="color: var(--amber); text-decoration: none">
+                Step 2 (Notion Setup)
+              </a>
               and complete the connector authorization.
             </p>
           </div>
@@ -253,8 +255,8 @@
             <p class="card-body">
               In the project's knowledge or files section, upload your resume files. Claude accepts
               Word (.docx), PDF, and plain text formats. Upload all resume variants you have &mdash;
-              Claude will read them to auto-configure your selection rules. If you can't upload files
-              directly, you'll paste the resume text during the onboarding prompt.
+              Claude will read them to auto-configure your selection rules. If you can't upload
+              files directly, you'll paste the resume text during the onboarding prompt.
             </p>
           </div>
 
@@ -310,7 +312,8 @@
               Copy Prompt
             </button>
           </div>
-          <pre class="prompt-body" id="onboarding-prompt">SYSTEM SETUP — AI Job Search Workflow
+          <pre class="prompt-body" id="onboarding-prompt">
+SYSTEM SETUP — AI Job Search Workflow
 
 You are my AI job search assistant. Your job is to help me review job
 postings, select and optimize my resume for each role, and track my
@@ -494,7 +497,8 @@ AFTER ALL SECTIONS ARE COMPLETE:
 4. Tell me: "To process your first job, open your Job Tracker in Notion,
    paste a job description into the Raw JD field of any row, and set the
    Status to Bookmarked. Then come back here and say: Review bookmarked
-   jobs — I will handle the rest."</pre>
+   jobs — I will handle the rest."</pre
+          >
         </div>
       </div>
     </section>
@@ -519,8 +523,9 @@ AFTER ALL SECTIONS ARE COMPLETE:
           <div class="card reveal">
             <h3 class="card-title">Before Each Interview</h3>
             <p class="card-body">
-              Create a new Claude Project for the role. Run the Interview Prep prompt. Claude
-              generates your cheat sheet, company research, and mock interview in one session.
+              Start a new chat for the role in your CareerPilot project. Claude generates an
+              8-section cheat sheet, company research, mock interviews, and interviewer-specific
+              prep &mdash; all in one living conversation.
             </p>
           </div>
 
@@ -533,9 +538,29 @@ AFTER ALL SECTIONS ARE COMPLETE:
           </div>
         </div>
 
+        <div class="callout-bar reveal" style="margin-top: 32px">
+          <p>
+            Want CLI automation or always-on operation? CareerPilot also runs in
+            <strong style="color: var(--text-1)">Claude Code</strong>
+            (via Notion MCP) and
+            <strong style="color: var(--text-1)">OpenClaw</strong>
+            (cron/heartbeat triggers). See the
+            <a
+              href="https://github.com/bigunit5150/JobTrackerClaudeSystem"
+              target="_blank"
+              rel="noopener"
+              style="color: var(--amber); text-decoration: none"
+            >
+              GitHub repo
+            </a>
+            for setup docs.
+          </p>
+        </div>
+
         <div class="completion-callout reveal">
           <p>
-            You're all set. Your AI job search system is ready.<br />
+            You're all set. CareerPilot is ready.
+            <br />
             Questions or issues?
             <a href="mailto:keith@kssoftware.net">keith@kssoftware.net</a>
           </p>
@@ -548,12 +573,7 @@ AFTER ALL SECTIONS ARE COMPLETE:
       <div class="container">
         <div class="page-nav reveal">
           <a href="notion-setup.html">&larr; Step 2 &mdash; Notion Setup</a>
-          <a
-            href="https://www.notion.so"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-primary"
-          >
+          <a href="https://www.notion.so" target="_blank" rel="noopener" class="btn btn-primary">
             View your Job Tracker in Notion &rarr;
           </a>
         </div>
