@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>OpenClaw Setup — CareerCopilot | KSSoftware</title>
+    <meta
+      name="description"
+      content="Set up OpenClaw to run CareerCopilot as an always-on agent. Automatically review jobs on a schedule and interact via chat."
+    />
+    <link rel="canonical" href="https://kssoftware.net/CareerCopilot/openclaw-setup.html" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .cmd-block {
+        background: var(--bg);
+        border: 1px solid var(--border-mid);
+        border-radius: var(--radius-sm);
+        padding: 16px 20px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 13px;
+        line-height: 1.7;
+        color: var(--amber-light);
+        overflow-x: auto;
+        margin: 16px 0;
+      }
+      .cmd-label {
+        font-size: 11px;
+        color: var(--text-3);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+        display: block;
+      }
+      .channel-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--card-radius);
+        padding: 16px 20px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .channel-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--amber);
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      .channel-name {
+        font-size: 0.9rem;
+        color: var(--text-1);
+        font-weight: 400;
+      }
+      .page-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+      }
+      .page-nav a:not(.btn) {
+        color: var(--amber);
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+      .page-nav a:not(.btn):visited {
+        color: var(--amber);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== NAV ========== -->
+    <nav id="site-nav">
+      <div class="container nav-inner">
+        <a href="../index.html" class="logo-lockup" aria-label="KSSoftware home">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M18 2L34 18L18 34L2 18Z" stroke="#e8a230" stroke-width="1.8" fill="none" />
+            <path
+              d="M13 22 Q18 11 23 22"
+              stroke="#e8a230"
+              stroke-width="1.6"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path
+              d="M10 25 Q18 6 26 25"
+              stroke="#e8a230"
+              stroke-width="1"
+              fill="none"
+              stroke-linecap="round"
+              opacity="0.45"
+            />
+            <circle cx="18" cy="22.5" r="2" fill="#e8a230" />
+          </svg>
+          <span class="logo-wordmark">KSSoftware</span>
+        </a>
+
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="extension.html">Extension</a></li>
+          <li><a href="claude-setup.html">Claude</a></li>
+          <li><a href="claude-code-setup.html">Claude Code</a></li>
+          <li><a href="openclaw-setup.html">OpenClaw</a></li>
+          <li><a href="extension.html" class="btn btn-primary">Get Started</a></li>
+        </ul>
+
+        <button type="button" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <div class="container hero-inner" style="grid-template-columns: 1fr; text-align: center">
+        <div>
+          <p class="eyebrow">Always-On Agent</p>
+          <h1>
+            Set Up
+            <br />
+            <em style="font-style: italic; color: var(--amber)">OpenClaw</em>
+          </h1>
+          <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
+            Run CareerCopilot as an always-on agent. Automatically review new jobs on a schedule and
+            interact via your favorite chat app.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== WHAT IS OPENCLAW ========== -->
+    <section>
+      <div class="container">
+        <div class="callout-bar reveal">
+          <p>
+            <a
+              href="https://openclaw.ai"
+              target="_blank"
+              rel="noopener"
+              style="color: var(--amber); text-decoration: none"
+              >OpenClaw</a
+            >
+            is an open-source AI agent that runs locally on your machine. It uses Claude as its
+            backend and loads the same AgentSkills from CareerCopilot's
+            <code style="color: var(--amber-light)">skills/</code>
+            directory. Unlike Claude Code, OpenClaw can run on a schedule and connect to your chat
+            platforms &mdash; processing new jobs automatically without any manual trigger.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== INSTALLATION ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Installation</p>
+        <h2 class="section-headline">Install OpenClaw.</h2>
+
+        <div class="grid-2">
+          <div class="card reveal">
+            <div class="step-number">01</div>
+            <h3 class="card-title">Install the CLI</h3>
+            <p class="card-body">
+              <code class="cmd-block">curl -fsSL https://openclaw.ai/install.sh | bash</code>
+              macOS users can also download the companion app from the
+              <a
+                href="https://github.com/openclaw/openclaw/releases/latest"
+                target="_blank"
+                rel="noopener"
+                style="color: var(--amber); text-decoration: none"
+                >GitHub releases</a
+              >
+              page.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">02</div>
+            <h3 class="card-title">Configure Claude Backend</h3>
+            <p class="card-body">
+              OpenClaw supports multiple AI backends. For CareerCopilot, configure it to use Claude.
+              Follow the
+              <a
+                href="https://docs.openclaw.ai/getting-started"
+                target="_blank"
+                rel="noopener"
+                style="color: var(--amber); text-decoration: none"
+                >OpenClaw getting started guide</a
+              >
+              to set up your API key and model preferences.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">03</div>
+            <h3 class="card-title">Connect Notion</h3>
+            <p class="card-body">
+              OpenClaw connects to services through its own integration system. Configure Notion
+              access following the
+              <a
+                href="https://docs.openclaw.ai/getting-started"
+                target="_blank"
+                rel="noopener"
+                style="color: var(--amber); text-decoration: none"
+                >OpenClaw docs</a
+              >
+              so the skills can read and write to your Job Tracker, Resume Repository, and Interview
+              Prep Hub.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="step-number">04</div>
+            <h3 class="card-title">Load Skills</h3>
+            <p class="card-body">
+              Clone the
+              <a
+                href="https://github.com/bigunit5150/JobTrackerClaudeSystem"
+                target="_blank"
+                rel="noopener"
+                style="color: var(--amber); text-decoration: none"
+                >CareerCopilot repo</a
+              >
+              and open it in OpenClaw. The skills in
+              <code style="color: var(--amber-light)">skills/</code>
+              are automatically discovered. You can also copy them to
+              <code style="color: var(--amber-light)">~/.openclaw/skills/</code>
+              for global access.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== SCHEDULED AUTOMATION ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Automation</p>
+        <h2 class="section-headline">Always-on job review.</h2>
+
+        <div class="reveal" style="max-width: 680px">
+          <p style="color: var(--text-2); line-height: 1.7; margin-bottom: 24px">
+            OpenClaw can run the job-review-workflow skill on a schedule. When you bookmark a job via
+            the Chrome extension, OpenClaw picks it up on the next cycle &mdash; evaluates fit,
+            optimizes your resume, and writes results back to Notion automatically.
+          </p>
+
+          <p style="color: var(--text-2); line-height: 1.7">
+            Configure cron or heartbeat triggers in OpenClaw to set the review frequency. See the
+            <a
+              href="https://docs.openclaw.ai/skills"
+              target="_blank"
+              rel="noopener"
+              style="color: var(--amber); text-decoration: none"
+              >OpenClaw skills documentation</a
+            >
+            for scheduling details.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== CHAT CHANNELS ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Chat Integration</p>
+        <h2 class="section-headline">Interact from anywhere.</h2>
+
+        <p
+          class="reveal"
+          style="
+            color: var(--text-2);
+            line-height: 1.7;
+            max-width: 680px;
+            margin-bottom: 32px;
+          "
+        >
+          OpenClaw connects to your existing chat platforms. Ask it to review jobs, build interview
+          prep, or check status from whichever app you already use.
+        </p>
+
+        <div class="grid-4 reveal">
+          <div class="channel-card">
+            <span class="channel-dot"></span>
+            <span class="channel-name">WhatsApp</span>
+          </div>
+          <div class="channel-card">
+            <span class="channel-dot"></span>
+            <span class="channel-name">Slack</span>
+          </div>
+          <div class="channel-card">
+            <span class="channel-dot"></span>
+            <span class="channel-name">Discord</span>
+          </div>
+          <div class="channel-card">
+            <span class="channel-dot"></span>
+            <span class="channel-name">Telegram</span>
+          </div>
+          <div class="channel-card">
+            <span class="channel-dot"></span>
+            <span class="channel-name">Signal</span>
+          </div>
+          <div class="channel-card">
+            <span class="channel-dot"></span>
+            <span class="channel-name">iMessage</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PAGE NAV ========== -->
+    <section>
+      <div class="container">
+        <div class="page-nav reveal">
+          <a href="claude-code-setup.html">&larr; Claude Code Setup</a>
+          <a href="index.html" class="btn btn-primary">Back to Overview &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; 2026 KSSoftware &nbsp;&middot;&nbsp;
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          &nbsp;&middot;&nbsp; Built for small business
+        </p>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

@@ -159,9 +159,10 @@
 
         <ul class="nav-links" id="nav-menu">
           <li><a href="#how-it-works">How It Works</a></li>
-          <li><a href="extension.html">Step 1: Extension</a></li>
-          <li><a href="notion-setup.html">Step 2: Notion</a></li>
-          <li><a href="claude-setup.html">Step 3: Claude</a></li>
+          <li><a href="extension.html">Extension</a></li>
+          <li><a href="claude-setup.html">Claude</a></li>
+          <li><a href="claude-code-setup.html">Claude Code</a></li>
+          <li><a href="openclaw-setup.html">OpenClaw</a></li>
           <li><a href="extension.html" class="btn btn-primary">Get Started</a></li>
         </ul>
 
@@ -405,16 +406,17 @@
         <h2 class="section-headline">Three execution modes.</h2>
 
         <div class="grid-3">
-          <div class="card reveal">
+          <a href="claude-setup.html" class="card reveal setup-card">
             <h3 class="card-title">Claude Projects</h3>
             <p class="card-body">
               Interactive mode at claude.ai. Create a project, connect Notion, and chat your way
               through job reviews and interview prep. Best for hands-on setup and first-time users.
             </p>
             <span class="badge" style="margin-top: 12px">Interactive</span>
-          </div>
+            <span class="card-link">Setup guide &rarr;</span>
+          </a>
 
-          <div class="card reveal">
+          <a href="claude-code-setup.html" class="card reveal setup-card">
             <h3 class="card-title">Claude Code</h3>
             <p class="card-body">
               CLI and IDE automation via Notion MCP. Run job review workflows from your terminal or
@@ -423,16 +425,18 @@
               skill. Best for developers.
             </p>
             <span class="badge" style="margin-top: 12px">CLI / IDE</span>
-          </div>
+            <span class="card-link">Setup guide &rarr;</span>
+          </a>
 
-          <div class="card reveal">
+          <a href="openclaw-setup.html" class="card reveal setup-card">
             <h3 class="card-title">OpenClaw</h3>
             <p class="card-body">
               Always-on agent with cron, heartbeat, and chat triggers. Automatically reviews new
               bookmarked jobs on a schedule without manual intervention.
             </p>
             <span class="badge" style="margin-top: 12px">Always-On</span>
-          </div>
+            <span class="card-link">Setup guide &rarr;</span>
+          </a>
         </div>
       </div>
     </section>

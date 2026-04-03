@@ -121,10 +121,13 @@
         padding-top: 32px;
         border-top: 1px solid var(--border);
       }
-      .page-nav a {
+      .page-nav a:not(.btn) {
         color: var(--amber);
         text-decoration: none;
         font-size: 0.95rem;
+      }
+      .page-nav a:not(.btn):visited {
+        color: var(--amber);
       }
     </style>
   </head>
@@ -157,9 +160,10 @@
 
         <ul class="nav-links" id="nav-menu">
           <li><a href="index.html#how-it-works">How It Works</a></li>
-          <li><a href="extension.html">Step 1: Extension</a></li>
-          <li><a href="notion-setup.html">Step 2: Notion</a></li>
-          <li><a href="claude-setup.html">Step 3: Claude</a></li>
+          <li><a href="extension.html">Extension</a></li>
+          <li><a href="claude-setup.html">Claude</a></li>
+          <li><a href="claude-code-setup.html">Claude Code</a></li>
+          <li><a href="openclaw-setup.html">OpenClaw</a></li>
           <li><a href="extension.html" class="btn btn-primary">Get Started</a></li>
         </ul>
 
@@ -572,9 +576,9 @@ AFTER ALL SECTIONS ARE COMPLETE:
     <section>
       <div class="container">
         <div class="page-nav reveal">
-          <a href="notion-setup.html">&larr; Step 2 &mdash; Notion Setup</a>
-          <a href="https://www.notion.so" target="_blank" rel="noopener" class="btn btn-primary">
-            View your Job Tracker in Notion &rarr;
+          <a href="notion-setup.html">&larr; Notion Setup</a>
+          <a href="claude-code-setup.html" class="btn btn-primary">
+            Claude Code Setup &rarr;
           </a>
         </div>
       </div>
