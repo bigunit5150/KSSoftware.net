@@ -159,7 +159,7 @@
         </a>
 
         <ul class="nav-links" id="nav-menu">
-          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
           <li><a href="extension.html">Extension</a></li>
           <li><a href="claude-setup.html">Claude</a></li>
           <li><a href="claude-code-setup.html">Claude Code</a></li>
@@ -221,7 +221,7 @@
         <div class="grid-2">
           <div class="card reveal">
             <div class="step-number">01</div>
-            <h3 class="card-title">Go to Claude Projects</h3>
+            <h3 class="card-title">Create a Claude Project</h3>
             <p class="card-body">
               Visit
               <a
@@ -236,31 +236,31 @@
               <strong style="color: var(--text-1)">Projects</strong>
               and click
               <strong style="color: var(--text-1)">+ New Project</strong>
-              . Name it something like "Job Search 2026" or "[Your Name] &mdash; Job Search".
+              . Name it "CareerPilot" or "[Your Name] &mdash; Job Search".
             </p>
           </div>
 
           <div class="card reveal">
             <div class="step-number">02</div>
-            <h3 class="card-title">Verify Notion is Connected</h3>
+            <h3 class="card-title">Upload the System Prompt</h3>
             <p class="card-body">
-              Inside your new project, look for the integrations or connector panel. Confirm Notion
-              shows as connected. If not, go back to
-              <a href="notion-setup.html" style="color: var(--amber); text-decoration: none">
-                Step 2 (Notion Setup)
-              </a>
-              and complete the connector authorization.
+              Open your new project's settings and paste the contents of
+              <code style="color: var(--amber-light)">prompts/system-prompt.md</code>
+              into the
+              <strong style="color: var(--text-1)">project instructions</strong>
+              field. This gives Claude full context about CareerPilot in every conversation.
             </p>
           </div>
 
           <div class="card reveal">
             <div class="step-number">03</div>
-            <h3 class="card-title">Upload Your Resumes</h3>
+            <h3 class="card-title">Verify Notion is Connected</h3>
             <p class="card-body">
-              In the project's knowledge or files section, upload your resume files. Claude accepts
-              Word (.docx), PDF, and plain text formats. Upload all resume variants you have &mdash;
-              Claude will read them to auto-configure your selection rules. If you can't upload
-              files directly, you'll paste the resume text during the onboarding prompt.
+              Confirm Notion shows as connected in your Claude settings. If not, go to
+              <a href="notion-setup.html" style="color: var(--amber); text-decoration: none">
+                Notion Setup
+              </a>
+              and complete the connector authorization.
             </p>
           </div>
 
@@ -268,9 +268,9 @@
             <div class="step-number">04</div>
             <h3 class="card-title">Run the Onboarding Prompt</h3>
             <p class="card-body">
-              Copy the full prompt below and paste it into a new chat inside your Claude Project.
-              Claude will guide you through the rest interactively &mdash; asking questions one
-              section at a time and building your configuration document automatically.
+              Copy the onboarding prompt below and paste it into a new chat inside your project.
+              Claude will walk you through uploading resumes and building your Resume Selection
+              Rules interactively.
             </p>
           </div>
         </div>
@@ -317,47 +317,69 @@
             </button>
           </div>
           <pre class="prompt-body" id="onboarding-prompt">
-SYSTEM SETUP — AI Job Search Workflow
+CAREERPILOT ONBOARDING
 
-You are my AI job search assistant. Your job is to help me review job
-postings, select and optimize my resume for each role, and track my
-applications.
-
-We are going to set up this system together right now. Follow each phase
-in order. Tell me clearly what you are doing and what I need to do at
-each step. Wait for my confirmation before moving to the next phase.
+Let's set up CareerPilot together. Walk me through each step in order.
+Tell me clearly what you're doing and what I need to do. Wait for my
+confirmation before moving to the next step.
 
 ---
 
-PHASE 0: VERIFY NOTION CONNECTION
+STEP 1 — PREREQUISITES CHECK
 
-Before anything else, confirm that your Notion integration is active.
-Try to read from my Job Tracker database. If you can access it, confirm
-and proceed. If not, tell me to go to claude.ai Settings > Integrations
-and connect Notion, then come back and try again.
+Before we begin, confirm each of these. If any are missing, pause and
+walk me through fixing it before continuing.
+
+1. Notion template: Have I duplicated the CareerPilot Notion template?
+   (https://www.notion.so/342037c8790b819195a6f4aea08e8bb4)
+   Try to read from my Job Tracker database to confirm.
+
+2. Notion connection: Can you access my Notion workspace right now?
+   If not, tell me to go to claude.ai Settings > Integrations > Notion
+   and connect it.
+
+3. Chrome extension: Have I installed the Job Post Tracker extension?
+   (I'll confirm — you can't check this directly.)
+
+If all three are confirmed, proceed. If not, help me fix what's missing.
 
 ---
 
-PHASE 1: LOAD MY RESUMES
+STEP 2 — DATABASE ID COLLECTION
 
-I have uploaded my resume files to this project (or will paste them now).
+I need to configure the Chrome extension with my Job Tracker database ID.
+Walk me through finding it:
 
-If files are already attached to this project:
-  1. Read all resume files
-  2. Identify how many resumes you found and what category each appears
-     to be (Director, Senior Manager, VP, etc.) based on the content
-  3. Show me a summary: file name → inferred category
-  4. Ask me to confirm or correct before continuing
+1. Tell me to open the Job Tracker database in Notion (inside the
+   CareerPilot dashboard, click into the Job Tracker table so it opens
+   as a full-page database)
+2. Tell me to copy the URL from the browser address bar
+3. Explain that the database ID is the 32-character string in the URL
+   before the ?v= parameter
+4. Tell me to paste it into the Chrome extension Settings page along
+   with my Notion Integration Token
 
-If no files are attached:
-  Tell me: "Please paste each resume now, one at a time. Start each with
-  a label like 'RESUME 1 — Director' so I can keep them separate."
-  Wait for me to paste all resumes before continuing.
+Ask me to confirm the extension is configured and the "Test Notion
+Connection" button works before continuing.
 
-Once resumes are confirmed, create a row in my Notion Resume Repository
-for each one:
-  - Resume Name: descriptive name (e.g. "Director of Engineering - Base")
-  - Category: your best match from the options
+---
+
+STEP 3 — RESUME INTAKE
+
+Ask me to paste my current resume(s). For each resume I provide:
+
+1. Read the full content
+2. Assign a descriptive name based on the content
+   (e.g. "Director of Engineering - Base", "Senior EM - Technical")
+3. Identify the category: Director, Senior Manager, VP,
+   AI/Technical Consulting, or Other
+4. Show me a summary: name → category → key differentiator
+5. Ask me to confirm or correct
+
+Once all resumes are confirmed, create a row in my Notion Resume
+Repository for each one:
+  - Resume Name: the descriptive name
+  - Category: your best match
   - Version: "v1.0"
   - Resume Content: full text of the resume
   - Active: "Yes"
@@ -367,11 +389,11 @@ Confirm how many rows were created before moving on.
 
 ---
 
-PHASE 2: BUILD MY RESUME SELECTION RULES
+STEP 4 — BUILD RESUME SELECTION RULES
 
-Now extract everything you can from the resumes automatically, then
-ask me questions ONE SECTION AT A TIME. Do not move to the next section
-until I have answered the current one.
+This is the most important step. Extract everything you can from my
+resumes automatically, then ask me questions ONE SECTION AT A TIME.
+Do not move to the next section until I've answered the current one.
 
 AUTO-EXTRACT FROM RESUMES (show me a summary to confirm):
 - Full name and contact information
@@ -383,125 +405,53 @@ AUTO-EXTRACT FROM RESUMES (show me a summary to confirm):
 - Technical skills (languages, cloud platforms, frameworks, tools)
 - What differentiates each resume variant from the others
 
-After showing the summary, ask me to confirm it is accurate. Correct
+After showing the summary, ask me to confirm it's accurate. Correct
 anything I flag before continuing.
 
----
+SECTION A — TARGETS & COMPENSATION
+SECTION B — LOCATION & WORK ARRANGEMENT
+SECTION C — DOMAIN & INDUSTRY PREFERENCES
+SECTION D — RESUME SELECTION LOGIC
+SECTION E — OPTIMIZATION SCOPE
+SECTION F — SIDE PROJECTS & ADDITIONAL WORK
+SECTION G — FIT ASSESSMENT FRAMEWORK
+SECTION H — FORMATTING STANDARDS
 
-SECTION 1 — TARGETS & COMPENSATION
-Ask me:
-1. What is your minimum acceptable base salary?
-2. What role levels are you actively targeting?
-3. Any role types to explicitly avoid?
-4. Preferred company stage and size?
-5. Any specific companies to target or avoid?
+(Ask each section one at a time. Wait for my answer before proceeding.)
 
----
-
-SECTION 2 — LOCATION & WORK ARRANGEMENT
-Ask me:
-6. What locations and work arrangements are you open to?
-7. Any you would consider but want flagged as non-ideal?
+AFTER ALL SECTIONS: Generate a complete Resume Selection Rules document
+and save it to my Notion Resume Repository as "Resume Selection Rules v1.0"
+(Category: Other, Active: Yes).
 
 ---
 
-SECTION 3 — DOMAIN & INDUSTRY PREFERENCES
-Based on my resume, suggest 5-8 industries or domains that match
-my background. Ask me to react: which interest me most, which to
-avoid, and whether there are any I want to add.
+STEP 5 — SETUP CONFIRMATION
+
+Read back the databases you can see via the Notion connector and show me:
+
+  CAREERPILOT SETUP COMPLETE
+  ──────────────────────────
+  Databases:        ✓ All three accessible
+  Resumes:          [count] loaded
+  Selection Rules:  ✓ Saved to Notion
+  Extension:        ✓ Configured (user confirmed)
 
 ---
 
-SECTION 4 — RESUME SELECTION LOGIC
-For each resume variant I uploaded, propose a use-when rule based
-on the content. Cover:
-  - Minimum years of management experience the JD signals
-  - Team size and org scope
-  - Reporting level
-  - Primary emphasis (strategic, technical, people leadership)
-Ask me to confirm, adjust, or add rules for each variant.
-Then ask: if two resumes both qualify for a role, how do we break the tie?
+STEP 6 — WHAT'S NEXT
 
----
+Tell me:
 
-SECTION 5 — OPTIMIZATION SCOPE
-Confirm which of these are in scope when tailoring a resume:
-  - Reorder or re-emphasize existing bullet points
-  - Rewrite bullets to mirror JD language (same facts, better framing)
-  - Adjust the summary or objective section
-  - Add or remove skills from the skills section
-  - Suggest sections to cut when length is tight
+"You're all set. Here's how to use CareerPilot:
 
-Then ask: What is strictly off limits?
-(e.g. never fabricate experience, never change job titles at previous
-employers, never invent metrics)
+1. Find a job on any job board and click the Chrome extension to save it
+2. Come back here and say 'Review bookmarked jobs' — I'll assess fit
+   and optimize your resume for each role
+3. When you get an interview, start a new chat in this project and say
+   'Start interview prep for [role]' — I'll research the company and
+   build your cheat sheet
 
----
-
-SECTION 6 — SIDE PROJECTS & ADDITIONAL WORK
-Ask me:
-Do you have any side projects, open source work, freelance, or consulting
-engagements to optionally include on your resume?
-For each, I need:
-  - Name and one-sentence description
-  - Tech stack (if technical)
-  - Live URL or GitHub link
-  - When to include: always, only for certain role types, never by default
-
----
-
-SECTION 7 — FIT ASSESSMENT FRAMEWORK
-Based on everything above, draft a Green / Yellow / Red flag system:
-  Green: strong fit — proceed and optimize resume
-  Yellow: partial fit — proceed with caveats noted
-  Red: recommend skip — do not optimize unless overridden
-
-Ask me to review and adjust each tier's criteria.
-Then ask: if a role is Red, should you still generate a resume if I
-ask for one anyway, or always decline?
-
----
-
-SECTION 8 — FORMATTING STANDARDS
-Ask me:
-- Maximum resume length?
-- Preferred output format? (Markdown, Word doc, plain text)
-- File naming convention?
-- Any sections to always include or exclude?
-- Any specific formatting rules?
-
----
-
-AFTER ALL SECTIONS ARE COMPLETE:
-
-1. Generate a complete Resume Selection Rules document with:
-   - Candidate Profile Summary
-   - Target Role Criteria
-   - Resume Variants and Selection Logic
-   - Resume Generation Protocol (step-by-step)
-   - Optimization Scope and Guardrails
-   - Side Projects Reference
-   - Key Accomplishments Table (tagged by best-fit role type)
-   - Fit Assessment Framework (Green / Yellow / Red)
-   - Formatting Standards
-   - Role-Specific Framing Notes (one section per domain)
-
-2. Save it to my Notion Resume Repository as a new row:
-   - Resume Name: "Resume Selection Rules v1.0"
-   - Category: "Other"
-   - Active: "Yes"
-   - Notes: "Master configuration — AI job review workflow"
-   - Resume Content: full document text
-
-3. Show me a setup completion summary:
-   - Resumes loaded: [count and names]
-   - Selection rules: saved to Notion
-   - Notion databases: confirmed accessible
-
-4. Tell me: "To process your first job, open your Job Tracker in Notion,
-   paste a job description into the Raw JD field of any row, and set the
-   Status to Bookmarked. Then come back here and say: Review bookmarked
-   jobs — I will handle the rest."</pre
+Your CareerPilot dashboard in Notion tracks everything."</pre
           >
         </div>
       </div>
@@ -563,8 +513,14 @@ AFTER ALL SECTIONS ARE COMPLETE:
 
         <div class="completion-callout reveal">
           <p>
-            You're all set. CareerPilot is ready.
-            <br />
+            Almost there. After the onboarding prompt finishes, run the
+            <strong style="color: var(--text-1)">Setup Validation</strong>
+            prompt (included in the repo at
+            <code style="color: var(--amber-light)">prompts/setup-validation.md</code>
+            ) to verify every connection and confirm your resumes, selection rules, and workflow
+            prompts are loaded correctly.
+          </p>
+          <p style="margin-top: 16px">
             Questions or issues?
             <a href="mailto:keith@kssoftware.net">keith@kssoftware.net</a>
           </p>

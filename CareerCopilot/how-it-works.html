@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>How It Works — CareerCopilot | KSSoftware</title>
+    <meta
+      name="description"
+      content="See how CareerCopilot guides you from finding a job posting to walking into the interview fully prepared. Your AI coach, every step of the way."
+    />
+    <link rel="canonical" href="https://kssoftware.net/CareerCopilot/how-it-works.html" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .step-row {
+        display: grid;
+        grid-template-columns: 72px 1fr;
+        gap: 24px;
+        align-items: start;
+        margin-bottom: 48px;
+      }
+      .step-num {
+        font-family: var(--font-display);
+        font-size: 2.4rem;
+        font-weight: 300;
+        color: var(--amber);
+        line-height: 1;
+        padding-top: 4px;
+      }
+      .step-content h3 {
+        font-family: var(--font-display);
+        font-weight: 300;
+        font-size: 1.35rem;
+        color: var(--text-1);
+        margin-bottom: 10px;
+      }
+      .step-content p {
+        font-size: 0.95rem;
+        color: var(--text-2);
+        line-height: 1.7;
+        max-width: 640px;
+      }
+      .phase-label {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--amber);
+        background: var(--amber-dim);
+        border-radius: 20px;
+        padding: 4px 12px;
+        margin-bottom: 32px;
+      }
+      .closing-section {
+        text-align: center;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .closing-section p {
+        font-size: 1rem;
+        color: var(--text-2);
+        line-height: 1.7;
+        margin-bottom: 32px;
+      }
+      .page-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+      }
+      .page-nav a:not(.btn) {
+        color: var(--amber);
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+      .page-nav a:not(.btn):visited {
+        color: var(--amber);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== NAV ========== -->
+    <nav id="site-nav">
+      <div class="container nav-inner">
+        <a href="../index.html" class="logo-lockup" aria-label="KSSoftware home">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+            <path d="M18 2L34 18L18 34L2 18Z" stroke="#e8a230" stroke-width="1.8" fill="none" />
+            <path
+              d="M13 22 Q18 11 23 22"
+              stroke="#e8a230"
+              stroke-width="1.6"
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path
+              d="M10 25 Q18 6 26 25"
+              stroke="#e8a230"
+              stroke-width="1"
+              fill="none"
+              stroke-linecap="round"
+              opacity="0.45"
+            />
+            <circle cx="18" cy="22.5" r="2" fill="#e8a230" />
+          </svg>
+          <span class="logo-wordmark">KSSoftware</span>
+        </a>
+
+        <ul class="nav-links" id="nav-menu">
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="extension.html">Extension</a></li>
+          <li><a href="claude-setup.html">Claude</a></li>
+          <li><a href="claude-code-setup.html">Claude Code</a></li>
+          <li><a href="openclaw-setup.html">OpenClaw</a></li>
+          <li><a href="extension.html" class="btn btn-primary">Get Started</a></li>
+        </ul>
+
+        <button type="button" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <div class="container hero-inner" style="grid-template-columns: 1fr; text-align: center">
+        <div>
+          <p class="eyebrow">How It Works</p>
+          <h1>
+            Your AI coach,
+            <br />
+            every step of the
+            <em style="font-style: italic; color: var(--amber)">way</em>
+            .
+          </h1>
+          <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
+            From finding a role to acing the interview &mdash; here&rsquo;s what the journey looks
+            like.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== PHASE 1: CAPTURE ========== -->
+    <section>
+      <div class="container">
+        <span class="phase-label">Phase 1 &mdash; Capture</span>
+
+        <div class="step-row reveal">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Find a job you like</h3>
+            <p>
+              You&rsquo;re browsing LinkedIn, Greenhouse, Lever, or any job board and spot a role
+              that catches your eye.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-row reveal">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Save it in one click</h3>
+            <p>
+              Click the CareerCopilot Chrome extension. The full posting &mdash; title, company, JD,
+              location, salary &mdash; is saved to your private Notion database. No copy-pasting,
+              nothing lost.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== PHASE 2: AI JOB REVIEW ========== -->
+    <section>
+      <div class="container">
+        <span class="phase-label">Phase 2 &mdash; AI Job Review</span>
+
+        <div class="step-row reveal">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Your coach reviews the role</h3>
+            <p>
+              Your AI coach reads the full job description against your background and preferences.
+              You get an honest fit assessment &mdash; where you&rsquo;re strong, where the gaps are,
+              and whether it&rsquo;s worth pursuing.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-row reveal">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>A resume built for this role</h3>
+            <p>
+              If it&rsquo;s a good match, your coach selects the right resume variant and optimizes
+              it for this specific JD &mdash; adjusting language, reordering highlights, mirroring
+              what the hiring team is looking for. The tailored resume is saved to your database.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-row reveal">
+          <div class="step-num">05</div>
+          <div class="step-content">
+            <h3>You apply</h3>
+            <p>
+              Take the optimized resume and submit your application. You&rsquo;re sending a resume
+              that was built for this role, not a generic one-size-fits-all.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== PHASE 3: INTERVIEW PREP ========== -->
+    <section>
+      <div class="container">
+        <span class="phase-label">Phase 3 &mdash; Interview Prep &amp; Coaching</span>
+
+        <div class="step-row reveal">
+          <div class="step-num">06</div>
+          <div class="step-content">
+            <h3>You get the interview</h3>
+            <p>
+              Update the status in your Notion database. Your AI coach sees the change and interview
+              prep begins.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-row reveal">
+          <div class="step-num">07</div>
+          <div class="step-content">
+            <h3>Company research &amp; cheat sheet</h3>
+            <p>
+              Your coach researches the company &mdash; recent news, culture, business model, why
+              they&rsquo;re hiring &mdash; and generates a master cheat sheet: your intro, key
+              accomplishments mapped to the JD, STAR stories, gaps to acknowledge, questions to ask,
+              and comp notes.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-row reveal">
+          <div class="step-num">08</div>
+          <div class="step-content">
+            <h3>Interviewer-specific prep</h3>
+            <p>
+              Before each round, tell your coach who you&rsquo;re meeting. They research the
+              interviewer and tailor your talking points, questions, and stories for that specific
+              person.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-row reveal">
+          <div class="step-num">09</div>
+          <div class="step-content">
+            <h3>Mock interviews</h3>
+            <p>
+              Practice with your coach. Realistic questions based on the role and round type. Honest
+              feedback on what landed, what to tighten, what to cut. Your cheat sheet updates with
+              better framings.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-row reveal">
+          <div class="step-num">10</div>
+          <div class="step-content">
+            <h3>Debrief after each round</h3>
+            <p>
+              After the real interview, debrief with your coach. Capture what went well, what
+              surprised you, what to adjust. Your prep compounds &mdash; each round makes you sharper
+              for the next.
+            </p>
+          </div>
+        </div>
+
+        <div class="step-row reveal">
+          <div class="step-num">11</div>
+          <div class="step-content">
+            <h3>Email review &amp; draft responses</h3>
+            <p>
+              Your coach helps review follow-up emails and draft responses &mdash; thank-you notes,
+              scheduling replies, negotiation responses &mdash; so every communication is polished
+              and on-brand.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ========== CLOSING ========== -->
+    <section>
+      <div class="container">
+        <div class="closing-section reveal">
+          <p class="eyebrow">The Big Picture</p>
+          <h2 class="section-headline">
+            A coach that
+            <br />
+            grows with you.
+          </h2>
+          <p>
+            Every job you save, every review, every mock, every debrief makes your coach smarter
+            about who you are. The system compounds over time &mdash; your preparation gets sharper,
+            your confidence grows, and you show up better for every opportunity.
+          </p>
+          <a href="extension.html" class="btn btn-primary">Get Started &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PAGE NAV ========== -->
+    <section>
+      <div class="container">
+        <div class="page-nav reveal">
+          <a href="index.html">&larr; Back to Overview</a>
+          <a href="extension.html" class="btn btn-primary">
+            Install the Extension &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          &copy; 2026 KSSoftware &nbsp;&middot;&nbsp;
+          <a href="../privacy-policy.html">Privacy Policy</a>
+          &nbsp;&middot;&nbsp; Built for small business
+        </p>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

@@ -7,7 +7,7 @@
     <title>Step 2: Set Up Notion — CareerPilot | KSSoftware</title>
     <meta
       name="description"
-      content="Create the three Notion databases that power CareerPilot. Job Tracker, Resume Repository, and Interview Prep Hub."
+      content="Duplicate the CareerPilot Notion template to get your dashboard and all three databases in one click. Then connect Claude."
     />
     <link rel="canonical" href="https://kssoftware.net/CareerCopilot/notion-setup.html" />
 
@@ -223,7 +223,7 @@
         </a>
 
         <ul class="nav-links" id="nav-menu">
-          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
           <li><a href="extension.html">Extension</a></li>
           <li><a href="claude-setup.html">Claude</a></li>
           <li><a href="claude-code-setup.html">Claude Code</a></li>
@@ -251,8 +251,8 @@
             <em style="font-style: italic; color: var(--amber)">Workspace</em>
           </h1>
           <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
-            Create the three databases that power your job search system. This takes about 10
-            minutes and only needs to be done once.
+            Duplicate the CareerPilot template to get your dashboard, all three databases, and
+            pre-built views in one click. Then connect Claude.
           </p>
         </div>
       </div>
@@ -273,9 +273,9 @@
           </a>
         </div>
 
-        <!-- ========== DATABASES ========== -->
-        <p class="eyebrow">Databases</p>
-        <h2 class="section-headline">Three databases, one setup.</h2>
+        <!-- ========== DUPLICATE TEMPLATE ========== -->
+        <p class="eyebrow">One-Click Setup</p>
+        <h2 class="section-headline">Duplicate the template.</h2>
         <p
           class="reveal"
           style="
@@ -286,286 +286,60 @@
             margin-bottom: 32px;
           "
         >
-          Your job search system uses three Notion databases that work together. You'll create all
-          three in the same Notion page or workspace.
+          The CareerPilot Notion template includes everything you need: a dashboard, all three
+          databases (Job Tracker, Resume Repository, Interview Prep Hub), pre-built views, and
+          a how-it-works guide. One click creates the entire workspace.
         </p>
 
-        <!-- DB 1 -->
-        <details class="reveal" open>
-          <summary>
-            <span>Database 1 &mdash; Job Tracker</span>
-          </summary>
-          <div class="details-body">
-            <span class="badge" style="margin-top: 0; margin-bottom: 12px">Required</span>
-            <p>
-              Stores every job you save, tracks status, holds the JD text, and receives Claude's AI
-              analysis.
-            </p>
-            <ol>
-              <li>Open Notion and navigate to the page where you want your job search hub</li>
-              <li>
-                Type
-                <strong>/database</strong>
-                and select "Table &mdash; Full page"
-              </li>
-              <li>
-                Name it exactly:
-                <strong>Job Tracker</strong>
-              </li>
-              <li>Add the following properties:</li>
-            </ol>
-            <table class="field-table">
-              <thead>
-                <tr>
-                  <th>Property Name</th>
-                  <th>Type</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Role Title</td>
-                  <td>Title (default)</td>
-                </tr>
-                <tr>
-                  <td>Company</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Job URL</td>
-                  <td>URL</td>
-                </tr>
-                <tr>
-                  <td>Raw JD</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>Select</td>
-                </tr>
-                <tr>
-                  <td>AI Notes</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Resume</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Location</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Job Type</td>
-                  <td>Select</td>
-                </tr>
-                <tr>
-                  <td>Salary Range</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Date Added</td>
-                  <td>Date</td>
-                </tr>
-                <tr>
-                  <td>Date Applied</td>
-                  <td>Date</td>
-                </tr>
-                <tr>
-                  <td>ATS Source</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Notes</td>
-                  <td>Text</td>
-                </tr>
-              </tbody>
-            </table>
-            <p style="margin-top: 12px">
-              For the
-              <strong>Status</strong>
-              select field, add these options: Bookmarked, AI Reviewed, AI Reviewed - Skip,
-              Applying, Applied, Interviewing, Offer, Closed
-            </p>
-            <p>
-              For the
-              <strong>Job Type</strong>
-              select field, add: Remote, Hybrid, Onsite
-            </p>
-          </div>
-        </details>
+        <div class="reveal" style="text-align: center; margin-bottom: 48px">
+          <a
+            href="https://www.notion.so/342037c8790b819195a6f4aea08e8bb4"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary"
+            style="font-size: 1.1rem; padding: 16px 32px"
+          >
+            Duplicate Template in Notion &rarr;
+          </a>
+        </div>
 
-        <!-- DB 2 -->
-        <details class="reveal">
-          <summary>
-            <span>Database 2 &mdash; Resume Repository</span>
-          </summary>
-          <div class="details-body">
-            <span class="badge" style="margin-top: 0; margin-bottom: 12px">Required</span>
-            <p>
-              Stores all your resume variants and selection rules. Claude reads from this database
-              to pick the right resume for each role.
-            </p>
-            <ol>
-              <li>Create another full-page table database in the same workspace</li>
-              <li>
-                Name it exactly:
-                <strong>Resume Repository</strong>
-              </li>
-              <li>Add the following properties:</li>
-            </ol>
-            <table class="field-table">
-              <thead>
-                <tr>
-                  <th>Property Name</th>
-                  <th>Type</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Resume Name</td>
-                  <td>Title</td>
-                </tr>
-                <tr>
-                  <td>Category</td>
-                  <td>Select</td>
-                </tr>
-                <tr>
-                  <td>Version</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Last Updated</td>
-                  <td>Date</td>
-                </tr>
-                <tr>
-                  <td>Resume Content</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Active</td>
-                  <td>Select</td>
-                </tr>
-                <tr>
-                  <td>Notes</td>
-                  <td>Text</td>
-                </tr>
-              </tbody>
-            </table>
-            <p style="margin-top: 12px">
-              <strong>Category</strong>
-              options: Director, Senior Manager, VP, AI/Technical Consulting, Other
-            </p>
-            <p>
-              <strong>Active</strong>
-              options: Yes, No
+        <div class="grid-3 reveal">
+          <div class="card">
+            <h3 class="card-title">What you get</h3>
+            <p class="card-body">
+              A complete CareerPilot workspace with three databases, a dashboard with weekly views,
+              a job board with filtered tabs, and historical reports.
             </p>
           </div>
-        </details>
 
-        <!-- DB 3 -->
-        <details class="reveal">
-          <summary>
-            <span>Database 3 &mdash; Interview Prep Hub</span>
-          </summary>
-          <div class="details-body">
-            <span class="badge" style="margin-top: 0; margin-bottom: 12px">Required</span>
-            <p>
-              Tracks every interview opportunity with research briefs, cheat sheets, mock interview
-              notes, and post-interview reflections.
-            </p>
-            <ol>
-              <li>Create another full-page table database in the same workspace</li>
-              <li>
-                Name it exactly:
-                <strong>Interview Prep Hub</strong>
-              </li>
-              <li>Add the following properties:</li>
-            </ol>
-            <table class="field-table">
-              <thead>
-                <tr>
-                  <th>Property Name</th>
-                  <th>Type</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Opportunity</td>
-                  <td>Title</td>
-                </tr>
-                <tr>
-                  <td>Company</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Role Title</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>Select</td>
-                </tr>
-                <tr>
-                  <td>Claude Project URL</td>
-                  <td>URL</td>
-                </tr>
-                <tr>
-                  <td>Job Tracker URL</td>
-                  <td>URL</td>
-                </tr>
-                <tr>
-                  <td>Resume Used</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Interview Round</td>
-                  <td>Select</td>
-                </tr>
-                <tr>
-                  <td>Interview Date</td>
-                  <td>Date</td>
-                </tr>
-                <tr>
-                  <td>Cheat Sheet</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Company Research</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Key Talking Points</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Questions To Ask</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Mock Interview Notes</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>Post Interview Notes</td>
-                  <td>Text</td>
-                </tr>
-                <tr>
-                  <td>AI Coaching Notes</td>
-                  <td>Text</td>
-                </tr>
-              </tbody>
-            </table>
-            <p style="margin-top: 12px">
-              <strong>Status</strong>
-              options: Active Prep, Interview Scheduled, Interview Complete, Offer, Closed
-            </p>
-            <p>
-              <strong>Interview Round</strong>
-              options: Phone Screen, Recruiter Screen, Hiring Manager, Panel, Final Round, Offer
-              Stage
+          <div class="card">
+            <h3 class="card-title">Three databases</h3>
+            <p class="card-body">
+              <strong style="color: var(--text-1)">Job Tracker</strong>
+              &mdash; every job you save, with status, JD, AI notes, and optimized resume.
+              <br /><br />
+              <strong style="color: var(--text-1)">Resume Repository</strong>
+              &mdash; your resume variants and selection rules.
+              <br /><br />
+              <strong style="color: var(--text-1)">Interview Prep Hub</strong>
+              &mdash; per-opportunity cheat sheets, research, and interview notes.
             </p>
           </div>
-        </details>
+
+          <div class="card">
+            <h3 class="card-title">Dashboard views</h3>
+            <p class="card-body">
+              <strong style="color: var(--text-1)">This Week</strong>
+              &mdash; bookmarked and applied jobs at a glance.
+              <br /><br />
+              <strong style="color: var(--text-1)">Job Board</strong>
+              &mdash; filtered tab views by status.
+              <br /><br />
+              <strong style="color: var(--text-1)">Historical Reports</strong>
+              &mdash; bar chart of jobs bookmarked by week.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -644,8 +418,7 @@
               <div class="step-number">04</div>
               <h3 class="card-title">Authorize Your Workspace</h3>
               <p class="card-body">
-                In the Notion authorization screen, select the workspace that contains your three
-                job search databases and click
+                In the Notion authorization screen, select the workspace where you duplicated the CareerPilot template and click
                 <strong style="color: var(--text-1)">Allow access</strong>
                 . You'll be redirected back to Claude automatically.
               </p>
@@ -706,7 +479,7 @@
                 </a>
               </li>
               <li>Click "New integration" (or find your existing one)</li>
-              <li>Give it a name like "Job Search AI"</li>
+              <li>Give it a name like "CareerPilot"</li>
               <li>
                 Copy the
                 <strong style="color: var(--text-1)">Internal Integration Token</strong>
