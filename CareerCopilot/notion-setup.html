@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Step 2: Set Up Notion — CareerPilot | KSSoftware</title>
+    <title>Step 1: Duplicate Notion Template — CareerPilot | KSSoftware</title>
     <meta
       name="description"
       content="Duplicate the CareerPilot Notion template to get your dashboard and all three databases in one click. Then connect Claude."
@@ -228,7 +228,7 @@
           <li><a href="claude-setup.html">Claude</a></li>
           <li><a href="claude-code-setup.html">Claude Code</a></li>
           <li><a href="openclaw-setup.html">OpenClaw</a></li>
-          <li><a href="extension.html" class="btn btn-primary">Get Started</a></li>
+          <li><a href="notion-setup.html" class="btn btn-primary">Get Started</a></li>
         </ul>
 
         <button type="button" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
@@ -243,7 +243,7 @@
     <section class="hero">
       <div class="container hero-inner" style="grid-template-columns: 1fr; text-align: center">
         <div>
-          <p class="eyebrow">Step 2 of 3</p>
+          <p class="eyebrow">Step 1 of 3</p>
           <h1>
             Set Up Your
             <br />
@@ -264,10 +264,7 @@
     <section>
       <div class="container">
         <div class="prereq-box reveal">
-          Before starting this step, make sure you have a Notion account and have installed the
-          Chrome extension from
-          <a href="extension.html">Step 1</a>
-          . Don't have a Notion account?
+          Before starting, make sure you have a Notion account. Don't have one?
           <a href="https://www.notion.so/signup" target="_blank" rel="noopener">
             Create a free Notion account &rarr;
           </a>
@@ -276,20 +273,6 @@
         <!-- ========== DUPLICATE TEMPLATE ========== -->
         <p class="eyebrow">One-Click Setup</p>
         <h2 class="section-headline">Duplicate the template.</h2>
-        <p
-          class="reveal"
-          style="
-            font-size: 0.95rem;
-            color: var(--text-2);
-            max-width: 680px;
-            line-height: 1.7;
-            margin-bottom: 32px;
-          "
-        >
-          The CareerPilot Notion template includes everything you need: a dashboard, all three
-          databases (Job Tracker, Resume Repository, Interview Prep Hub), pre-built views, and
-          a how-it-works guide. One click creates the entire workspace.
-        </p>
 
         <div class="reveal" style="text-align: center; margin-bottom: 48px">
           <a
@@ -299,47 +282,79 @@
             class="btn btn-primary"
             style="font-size: 1.1rem; padding: 16px 32px"
           >
-            Duplicate Template in Notion &rarr;
+            Duplicate CareerPilot Template &rarr;
           </a>
         </div>
 
         <div class="grid-3 reveal">
           <div class="card">
-            <h3 class="card-title">What you get</h3>
+            <div class="step-number">01</div>
+            <h3 class="card-title">Open the Template</h3>
+            <p class="card-body">Click the button above. Sign in to Notion if prompted.</p>
+          </div>
+
+          <div class="card">
+            <div class="step-number">02</div>
+            <h3 class="card-title">Duplicate</h3>
             <p class="card-body">
-              A complete CareerPilot workspace with three databases, a dashboard with weekly views,
-              a job board with filtered tabs, and historical reports.
+              Click "Duplicate" in the top-right corner of the Notion page. This copies the
+              CareerPilot dashboard and all three databases into your workspace automatically.
             </p>
           </div>
 
           <div class="card">
-            <h3 class="card-title">Three databases</h3>
+            <div class="step-number">03</div>
+            <h3 class="card-title">Copy Your Database ID</h3>
             <p class="card-body">
-              <strong style="color: var(--text-1)">Job Tracker</strong>
-              &mdash; every job you save, with status, JD, AI notes, and optimized resume.
-              <br /><br />
-              <strong style="color: var(--text-1)">Resume Repository</strong>
-              &mdash; your resume variants and selection rules.
-              <br /><br />
-              <strong style="color: var(--text-1)">Interview Prep Hub</strong>
-              &mdash; per-opportunity cheat sheets, research, and interview notes.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3 class="card-title">Dashboard views</h3>
-            <p class="card-body">
-              <strong style="color: var(--text-1)">This Week</strong>
-              &mdash; bookmarked and applied jobs at a glance.
-              <br /><br />
-              <strong style="color: var(--text-1)">Job Board</strong>
-              &mdash; filtered tab views by status.
-              <br /><br />
-              <strong style="color: var(--text-1)">Historical Reports</strong>
-              &mdash; bar chart of jobs bookmarked by week.
+              Open your duplicated Job Tracker database in Notion. Copy the database ID from the URL
+              &mdash; it is the 32-character string after the last
+              <code style="color: var(--amber-light)">/</code>
+              and before the
+              <code style="color: var(--amber-light)">?v=</code>
+              . You will need this in the next step.
             </p>
           </div>
         </div>
+
+        <div
+          style="
+            border-left: 3px solid var(--amber);
+            background: var(--bg-subtle);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-top: 32px;
+            font-size: 0.9rem;
+            color: var(--text-2);
+            line-height: 1.6;
+          "
+        >
+          The template creates your Job Tracker, Resume Repository, and Interview Prep Hub pre-wired
+          and ready &mdash; no manual field setup required.
+        </div>
+
+        <details style="margin-top: 32px">
+          <summary>What's included in the template</summary>
+          <div class="details-body">
+            <ol>
+              <li>
+                <strong>CareerPilot Dashboard</strong>
+                &mdash; weekly tracking, job board, and historical reports in one view
+              </li>
+              <li>
+                <strong>Job Tracker</strong>
+                &mdash; every job the extension saves lands here
+              </li>
+              <li>
+                <strong>Resume Repository</strong>
+                &mdash; stores your resume variants and AI selection rules
+              </li>
+              <li>
+                <strong>Interview Prep Hub</strong>
+                &mdash; cheat sheets, mock interview notes, and coaching feedback per opportunity
+              </li>
+            </ol>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -418,7 +433,8 @@
               <div class="step-number">04</div>
               <h3 class="card-title">Authorize Your Workspace</h3>
               <p class="card-body">
-                In the Notion authorization screen, select the workspace where you duplicated the CareerPilot template and click
+                In the Notion authorization screen, select the workspace where you duplicated the
+                CareerPilot template and click
                 <strong style="color: var(--text-1)">Allow access</strong>
                 . You'll be redirected back to Claude automatically.
               </p>
@@ -526,9 +542,9 @@
     <section>
       <div class="container">
         <div class="page-nav reveal">
-          <a href="extension.html">&larr; Step 1 &mdash; Extension</a>
-          <a href="claude-setup.html" class="btn btn-primary">
-            Step 3 &mdash; Configure Claude &rarr;
+          <a href="index.html">&larr; Overview</a>
+          <a href="extension.html" class="btn btn-primary">
+            Step 2: Install Chrome Extension &rarr;
           </a>
         </div>
       </div>

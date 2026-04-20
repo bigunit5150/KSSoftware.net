@@ -113,7 +113,7 @@
           <li><a href="claude-setup.html">Claude</a></li>
           <li><a href="claude-code-setup.html">Claude Code</a></li>
           <li><a href="openclaw-setup.html">OpenClaw</a></li>
-          <li><a href="extension.html" class="btn btn-primary">Get Started</a></li>
+          <li><a href="notion-setup.html" class="btn btn-primary">Get Started</a></li>
         </ul>
 
         <button type="button" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
@@ -184,7 +184,8 @@
             <p class="card-body">
               <strong style="color: var(--text-1)">VS Code:</strong>
               Open Extensions, search "Claude Code", install.
-              <br /><br />
+              <br />
+              <br />
               <strong style="color: var(--text-1)">JetBrains:</strong>
               Settings &rarr; Plugins &rarr; Marketplace, search "Claude Code", install.
             </p>
@@ -194,8 +195,9 @@
             <div class="step-number">03</div>
             <h3 class="card-title">Authenticate</h3>
             <p class="card-body">
-              Run <code style="color: var(--amber-light)">claude</code> in your terminal and follow
-              the browser prompt to sign in with your Anthropic account.
+              Run
+              <code style="color: var(--amber-light)">claude</code>
+              in your terminal and follow the browser prompt to sign in with your Anthropic account.
             </p>
           </div>
 
@@ -203,7 +205,11 @@
             <div class="step-number">04</div>
             <h3 class="card-title">Verify</h3>
             <p class="card-body">
-              <code class="cmd-block">claude --version<br />claude doctor</code>
+              <code class="cmd-block">
+                claude --version
+                <br />
+                claude doctor
+              </code>
             </p>
           </div>
         </div>
@@ -225,18 +231,11 @@
           </p>
 
           <span class="cmd-label">Add the Notion MCP server</span>
-          <code class="cmd-block"
-            >claude mcp add --transport http notion https://mcp.notion.com/mcp</code
-          >
+          <code class="cmd-block">
+            claude mcp add --transport http notion https://mcp.notion.com/mcp
+          </code>
 
-          <p
-            style="
-              color: var(--text-2);
-              line-height: 1.7;
-              margin-top: 16px;
-              margin-bottom: 16px;
-            "
-          >
+          <p style="color: var(--text-2); line-height: 1.7; margin-top: 16px; margin-bottom: 16px">
             Authenticate when prompted. Then verify:
           </p>
 
@@ -257,25 +256,23 @@
           <div class="skill-card">
             <h4>job-review-workflow</h4>
             <p>
-              Reads all Bookmarked jobs from Notion, runs fit assessment against your Resume Selection
-              Rules, selects and optimizes the right resume variant, and writes results back. Processes
-              your entire backlog in one command.
+              Reads all Bookmarked jobs from Notion, runs fit assessment against your Resume
+              Selection Rules, selects and optimizes the right resume variant, and writes results
+              back. Processes your entire backlog in one command.
             </p>
-            <code class="cmd-block"
-              >claude "Review all bookmarked jobs in my Notion Job Tracker"</code
-            >
+            <code class="cmd-block">
+              claude "Review all bookmarked jobs in my Notion Job Tracker"
+            </code>
           </div>
 
           <div class="skill-card">
             <h4>interview-prep-builder</h4>
             <p>
-              Given a Job Tracker row URL, researches the company, generates an 8-section master cheat
-              sheet (self-introduction, key accomplishments, STAR stories, and more), and saves
-              everything to your Interview Prep Hub.
+              Given a Job Tracker row URL, researches the company, generates an 8-section master
+              cheat sheet (self-introduction, key accomplishments, STAR stories, and more), and
+              saves everything to your Interview Prep Hub.
             </p>
-            <code class="cmd-block"
-              >claude "Build interview prep for [NOTION ROW URL]"</code
-            >
+            <code class="cmd-block">claude "Build interview prep for [NOTION ROW URL]"</code>
           </div>
 
           <p style="color: var(--text-2); line-height: 1.7; margin-top: 24px">
@@ -285,8 +282,9 @@
               target="_blank"
               rel="noopener"
               style="color: var(--amber); text-decoration: none"
-              >AgentSkills</a
             >
+              AgentSkills
+            </a>
             open standard &mdash; the same format works in Claude Code, OpenClaw, Cursor, GitHub
             Copilot, and 30+ other compatible agents.
           </p>
