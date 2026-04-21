@@ -149,6 +149,27 @@
       .connector-step .card {
         margin: 0;
       }
+      .video-placeholder {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        max-width: 800px;
+        margin: 0 auto 48px;
+        border-radius: var(--card-radius);
+        border: 1px dashed var(--border-mid);
+        overflow: hidden;
+        background: var(--bg-subtle);
+      }
+      .video-placeholder span {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        color: var(--text-2);
+        letter-spacing: 0.04em;
+      }
       .page-nav {
         display: flex;
         justify-content: space-between;
@@ -269,6 +290,11 @@
           done inside your Claude account settings. This enables the official Notion MCP connector
           used by Claude Projects and Claude Code.
         </p>
+
+        <!-- ========== VIDEO WALKTHROUGH ========== -->
+        <div class="video-placeholder reveal">
+          <span>Video walkthrough coming soon</span>
+        </div>
 
         <div class="steps-connector reveal">
           <div class="connector-step">

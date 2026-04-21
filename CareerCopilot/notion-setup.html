@@ -87,6 +87,25 @@
       .details-body strong {
         color: var(--text-1);
       }
+      .video-embed {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        max-width: 800px;
+        margin: 0 auto 48px;
+        border-radius: var(--card-radius);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        background: var(--bg-card);
+      }
+      .video-embed iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
       .page-nav {
         display: flex;
         justify-content: space-between;
@@ -180,6 +199,15 @@
           <a href="https://www.notion.so/signup" target="_blank" rel="noopener">
             Create a free Notion account &rarr;
           </a>
+        </div>
+
+        <!-- ========== VIDEO WALKTHROUGH ========== -->
+        <div class="video-embed reveal">
+          <iframe
+            src="https://www.loom.com/embed/c3acd7cba7e445768c81658e87cc3d56"
+            allow="fullscreen"
+            title="Install the CareerPilot Notion template"
+          ></iframe>
         </div>
 
         <!-- ========== DUPLICATE TEMPLATE ========== -->
