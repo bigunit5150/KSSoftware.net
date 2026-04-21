@@ -7,7 +7,7 @@
     <title>Step 3: Configure Claude — CareerPilot | KSSoftware</title>
     <meta
       name="description"
-      content="Create your Claude Project, upload resumes, and run the CareerPilot onboarding prompt to generate your Resume Selection Rules."
+      content="Connect Claude to your Notion workspace, create your Claude Project, upload resumes, and run the CareerPilot onboarding prompt to generate your Resume Selection Rules."
     />
     <link rel="canonical" href="https://kssoftware.net/CareerCopilot/claude-setup.html" />
 
@@ -111,6 +111,44 @@
         color: var(--amber);
         text-decoration: none;
       }
+      .steps-connector {
+        position: relative;
+        padding-left: 48px;
+        max-width: 680px;
+      }
+      .steps-connector::before {
+        content: '';
+        position: absolute;
+        left: 19px;
+        top: 32px;
+        bottom: 32px;
+        width: 1px;
+        background: repeating-linear-gradient(
+          to bottom,
+          var(--amber) 0px,
+          var(--amber) 4px,
+          transparent 4px,
+          transparent 10px
+        );
+        opacity: 0.3;
+      }
+      .connector-step {
+        position: relative;
+        margin-bottom: 24px;
+      }
+      .connector-step::before {
+        content: '';
+        position: absolute;
+        left: -37px;
+        top: 24px;
+        width: 10px;
+        height: 10px;
+        background: var(--amber);
+        border-radius: 50%;
+      }
+      .connector-step .card {
+        margin: 0;
+      }
       .page-nav {
         display: flex;
         justify-content: space-between;
@@ -187,8 +225,8 @@
             for Your Search
           </h1>
           <p class="hero-sub reveal" style="margin-left: auto; margin-right: auto">
-            Create your job search project in Claude, upload your resumes, and run the onboarding
-            prompt to configure everything in one shot.
+            Connect Claude to your Notion workspace, create your job search project, upload your
+            resumes, and run the onboarding prompt to configure everything in one shot.
           </p>
         </div>
       </div>
@@ -212,13 +250,111 @@
 
     <hr class="divider" />
 
+    <!-- ========== CONNECT CLAUDE ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Connector Setup</p>
+        <h2 class="section-headline">Connect Claude to your workspace.</h2>
+        <p
+          class="reveal"
+          style="
+            font-size: 0.95rem;
+            color: var(--text-2);
+            max-width: 680px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+          "
+        >
+          Claude needs permission to read and write your Notion databases. This is a one-time step
+          done inside your Claude account settings. This enables the official Notion MCP connector
+          used by Claude Projects and Claude Code.
+        </p>
+
+        <div class="steps-connector reveal">
+          <div class="connector-step">
+            <div class="card">
+              <div class="step-number">01</div>
+              <h3 class="card-title">Open Claude Settings</h3>
+              <p class="card-body">
+                Go to
+                <a
+                  href="https://claude.ai"
+                  target="_blank"
+                  rel="noopener"
+                  style="color: var(--amber); text-decoration: none"
+                >
+                  claude.ai
+                </a>
+                and sign in. Click your profile icon in the top-right corner. Select
+                <strong style="color: var(--text-1)">Settings</strong>
+                from the dropdown menu.
+              </p>
+            </div>
+          </div>
+
+          <div class="connector-step">
+            <div class="card">
+              <div class="step-number">02</div>
+              <h3 class="card-title">Navigate to Integrations</h3>
+              <p class="card-body">
+                In the Settings sidebar, click
+                <strong style="color: var(--text-1)">Integrations</strong>
+                . You'll see a list of available connectors.
+              </p>
+            </div>
+          </div>
+
+          <div class="connector-step">
+            <div class="card">
+              <div class="step-number">03</div>
+              <h3 class="card-title">Connect Notion</h3>
+              <p class="card-body">
+                Find
+                <strong style="color: var(--text-1)">Notion</strong>
+                in the integrations list and click
+                <strong style="color: var(--text-1)">Connect</strong>
+                . You'll be redirected to Notion to authorize access.
+              </p>
+            </div>
+          </div>
+
+          <div class="connector-step">
+            <div class="card">
+              <div class="step-number">04</div>
+              <h3 class="card-title">Authorize Your Workspace</h3>
+              <p class="card-body">
+                In the Notion authorization screen, select the workspace where you duplicated the
+                CareerPilot template and click
+                <strong style="color: var(--text-1)">Allow access</strong>
+                . You'll be redirected back to Claude automatically.
+              </p>
+            </div>
+          </div>
+
+          <div class="connector-step">
+            <div class="card">
+              <div class="step-number">05</div>
+              <h3 class="card-title">Verify the Connection</h3>
+              <p class="card-body">
+                Back in Claude, the Notion integration should now show as
+                <strong style="color: var(--text-1)">Connected</strong>
+                . You're ready to set up your project.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
     <!-- ========== CREATE PROJECT ========== -->
     <section>
       <div class="container">
         <p class="eyebrow">Project Setup</p>
         <h2 class="section-headline">Set up your Claude Project.</h2>
 
-        <div class="grid-2">
+        <div class="grid-3">
           <div class="card reveal">
             <div class="step-number">01</div>
             <h3 class="card-title">Create a Claude Project</h3>
@@ -254,18 +390,6 @@
 
           <div class="card reveal">
             <div class="step-number">03</div>
-            <h3 class="card-title">Verify Notion is Connected</h3>
-            <p class="card-body">
-              Confirm Notion shows as connected in your Claude settings. If not, go to
-              <a href="notion-setup.html" style="color: var(--amber); text-decoration: none">
-                Notion Setup
-              </a>
-              and complete the connector authorization.
-            </p>
-          </div>
-
-          <div class="card reveal">
-            <div class="step-number">04</div>
             <h3 class="card-title">Run the Onboarding Prompt</h3>
             <p class="card-body">
               Copy the onboarding prompt below and paste it into a new chat inside your project.

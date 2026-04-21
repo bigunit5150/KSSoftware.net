@@ -21,25 +21,6 @@
     <link rel="stylesheet" href="../css/style.css" />
 
     <style>
-      .config-field {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--card-radius);
-        padding: 28px;
-        margin-bottom: 20px;
-      }
-      .config-field h4 {
-        font-family: var(--font-display);
-        font-weight: 300;
-        font-size: 1.1rem;
-        margin-bottom: 8px;
-      }
-      .config-field p {
-        font-size: 0.9rem;
-        color: var(--text-2);
-        line-height: 1.6;
-        margin-bottom: 12px;
-      }
       .config-example {
         font-family: 'Courier New', monospace;
         background: var(--bg);
@@ -48,8 +29,21 @@
         padding: 8px 12px;
         color: var(--amber-light);
         font-size: 13px;
-        display: block;
-        overflow-x: auto;
+        display: inline-block;
+        margin-top: 4px;
+      }
+      .warning-callout {
+        background: var(--amber-dim);
+        border: 1px solid var(--border-mid);
+        border-radius: var(--radius-sm);
+        padding: 16px 20px;
+        font-size: 0.9rem;
+        color: var(--text-2);
+        line-height: 1.6;
+        margin-top: 24px;
+      }
+      .warning-callout strong {
+        color: var(--amber);
       }
       .board-card {
         background: var(--bg-card);
@@ -229,28 +223,78 @@
     <section>
       <div class="container">
         <p class="eyebrow">Configuration</p>
-        <h2 class="section-headline">Two fields to fill in.</h2>
+        <h2 class="section-headline">Grab your database IDs for the extension.</h2>
+        <p
+          class="reveal"
+          style="
+            font-size: 0.95rem;
+            color: var(--text-2);
+            max-width: 680px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+          "
+        >
+          The Chrome extension needs two values from Notion: your integration token and your Job
+          Tracker database ID. Here's how to find both.
+        </p>
 
-        <div class="reveal" style="max-width: 680px">
-          <div class="config-field">
-            <h4>Notion Integration Token</h4>
-            <p>
-              Where to find it: Notion Settings &rarr; Connections &rarr; Develop or manage
-              integrations &rarr; New integration &rarr; copy the Internal Integration Token
-            </p>
-            <code class="config-example">
-              secret_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-            </code>
+        <div class="grid-2 reveal">
+          <div class="card">
+            <h3 class="card-title">Integration Token</h3>
+            <ol
+              style="padding-left: 20px; color: var(--text-2); font-size: 0.9rem; line-height: 1.8"
+            >
+              <li>
+                Go to
+                <a
+                  href="https://www.notion.so/profile/integrations"
+                  target="_blank"
+                  rel="noopener"
+                  style="color: var(--amber); text-decoration: none"
+                >
+                  notion.so/profile/integrations
+                </a>
+              </li>
+              <li>Click "New integration" (or find your existing one)</li>
+              <li>Give it a name like "CareerPilot"</li>
+              <li>
+                Copy the
+                <strong style="color: var(--text-1)">Internal Integration Token</strong>
+                <br />
+                It starts with
+                <code class="config-example">secret_</code>
+              </li>
+              <li>Paste it into the Chrome extension settings</li>
+            </ol>
           </div>
 
-          <div class="config-field">
-            <h4>Notion Database ID</h4>
-            <p>
-              Paste the Job Tracker database ID you copied from Notion in Step 1. This connects the
-              extension directly to your CareerPilot workspace.
-            </p>
-            <code class="config-example">320037c8790b80049498d26d7d85322c</code>
+          <div class="card">
+            <h3 class="card-title">Database ID</h3>
+            <ol
+              style="padding-left: 20px; color: var(--text-2); font-size: 0.9rem; line-height: 1.8"
+            >
+              <li>
+                Open your
+                <strong style="color: var(--text-1)">Job Tracker</strong>
+                database in Notion (full page view)
+              </li>
+              <li>Copy the URL from your browser address bar</li>
+              <li>
+                The database ID is the 32-character string in the URL:
+                <br />
+                notion.so/
+                <code class="config-example">320037c8790b80049498d26d7d85322c</code>
+                ?v=...
+              </li>
+              <li>Paste it into the Chrome extension settings</li>
+            </ol>
           </div>
+        </div>
+
+        <div class="warning-callout reveal">
+          <strong>Keep your Integration Token private.</strong>
+          It gives write access to your Notion workspace. Never share it or commit it to a public
+          repository.
         </div>
       </div>
     </section>
