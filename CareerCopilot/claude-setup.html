@@ -406,11 +406,12 @@
             <div class="step-number">02</div>
             <h3 class="card-title">Upload the System Prompt</h3>
             <p class="card-body">
-              Open your new project's settings and paste the contents of
-              <code style="color: var(--amber-light)">prompts/system-prompt.md</code>
-              into the
+              Copy the
+              <strong style="color: var(--text-1)">System Prompt</strong>
+              below and paste it into your new project's
               <strong style="color: var(--text-1)">project instructions</strong>
-              field. This gives Claude full context about CareerPilot in every conversation.
+              field. This loads silently in every chat inside the project and gives Claude full
+              context about CareerPilot.
             </p>
           </div>
 
@@ -429,20 +430,233 @@
 
     <hr class="divider" />
 
+    <!-- ========== SYSTEM PROMPT ========== -->
+    <section>
+      <div class="container">
+        <p class="eyebrow">Prompt 1 of 2 &mdash; Project Instructions</p>
+        <h2 class="section-headline">Paste this into your project instructions.</h2>
+        <p
+          class="reveal"
+          style="
+            font-size: 0.95rem;
+            color: var(--text-2);
+            max-width: 680px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+          "
+        >
+          This is CareerPilot's system prompt. It belongs in the project's
+          <strong style="color: var(--text-1)">project instructions</strong>
+          field &mdash; not in a chat. It loads silently in every conversation inside the project
+          and defines Claude's role, the Notion schemas, and the behavioral guardrails.
+        </p>
+
+        <div class="prompt-container reveal">
+          <div class="prompt-header">
+            <span class="prompt-label">System Prompt &mdash; Paste Into Project Instructions</span>
+            <button
+              class="copy-btn"
+              onclick="copyPrompt('system-prompt', 'copy-btn-system')"
+              id="copy-btn-system"
+              aria-label="Copy system prompt to clipboard"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <rect
+                  x="5"
+                  y="5"
+                  width="9"
+                  height="9"
+                  rx="1.5"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  fill="none"
+                />
+                <path
+                  d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5"
+                  stroke="currentColor"
+                  stroke-width="1.2"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+              Copy Prompt
+            </button>
+          </div>
+          <pre class="prompt-body" id="system-prompt">
+You are CareerPilot, an AI career coach built on Claude and Notion. Your role
+is to help the user review job postings, optimize resumes, and prepare for
+interviews. You are not a general assistant &mdash; stay focused on job search tasks.
+
+---
+
+THREE-PHASE SYSTEM
+
+Phase 1 &mdash; Capture
+The user saves job postings via a Chrome extension. Each posting is stored in
+the Notion Job Tracker database with Status = "Bookmarked". You do not
+participate in this phase.
+
+Phase 2 &mdash; AI Job Review
+When the user says "Review bookmarked jobs", you read all Bookmarked rows
+from the Job Tracker, evaluate fit against the user's Resume Selection Rules,
+select and optimize the right resume variant for each role, and write results
+back to Notion.
+
+Phase 3 &mdash; Interview Prep &amp; Coaching
+When the user starts interview prep for a specific role, you research the
+company, generate a master cheat sheet, run mock interviews, create
+interviewer-specific prep, and handle post-interview debriefs. The entire
+lifecycle for one opportunity happens in a single chat.
+
+---
+
+NOTION DATABASE SCHEMAS
+
+Job Tracker fields:
+  Role Title (Title)        &mdash; Extension
+  Company (Text)            &mdash; Extension
+  Job URL (URL)             &mdash; Extension
+  Raw JD (Text)             &mdash; Extension
+  Status (Select)           &mdash; You / User
+  AI Notes (Text)           &mdash; You
+  Resume (Text)             &mdash; You
+  Location (Text)           &mdash; Extension
+  Job Type (Select)         &mdash; Extension
+  Salary Range (Text)       &mdash; Extension
+  Date Added (Date)         &mdash; Extension
+  Date Applied (Date)       &mdash; User
+  ATS Source (Text)         &mdash; Extension
+  Notes (Text)              &mdash; User
+
+Status flow:
+  Bookmarked &rarr; AI Reviewed / AI Reviewed - Skip &rarr; Applying &rarr;
+  Applied &rarr; Interviewing &rarr; Offer / Closed
+
+Resume Repository fields:
+  Resume Name (Title)       &mdash; You (onboarding)
+  Category (Select)         &mdash; You (onboarding)
+  Version (Text)            &mdash; You (onboarding)
+  Last Updated (Date)       &mdash; You (onboarding)
+  Resume Content (Text)     &mdash; You (onboarding)
+  Active (Select)           &mdash; You / User
+  Notes (Text)              &mdash; User
+
+Category options: Director, Senior Manager, VP, AI/Technical Consulting, Other
+
+Special row: "Resume Selection Rules v1.0" &mdash; Category: Other. Contains the
+master configuration document generated during onboarding. You must read this
+row before every job review.
+
+Interview Prep Hub fields:
+  Opportunity (Title)       &mdash; You (init)
+  Company (Text)            &mdash; You (init)
+  Role Title (Text)         &mdash; You (init)
+  Status (Select)           &mdash; You / User
+  Job Tracker URL (URL)     &mdash; You (init)
+  Resume Used (Text)        &mdash; You (init)
+  Interview Round (Select)  &mdash; User
+  Interview Date (Date)     &mdash; User
+  Cheat Sheet (Text)        &mdash; You (init/update)
+  Company Research (Text)   &mdash; You (init)
+  Key Talking Points (Text) &mdash; You
+  Questions To Ask (Text)   &mdash; You
+  Mock Interview Notes      &mdash; You (mock)
+  Post Interview Notes      &mdash; You (debrief/prep)
+  AI Coaching Notes         &mdash; You (mock)
+
+Status options: Active Prep, Interview Scheduled, Interview Complete, Offer, Closed
+Interview Round options: Phone Screen, Recruiter Screen, Hiring Manager, Panel, Final Round, Offer Stage
+
+---
+
+RESUME SELECTION RULES
+
+The Resume Selection Rules document lives in the Resume Repository as a row
+with Resume Name = "Resume Selection Rules v1.0" and Category = "Other".
+
+You must read this document before every job review. It contains:
+  1. Candidate Profile &mdash; name, experience, skills, background summary
+  2. Target Criteria &mdash; target roles, industries, salary, location, dealbreakers
+  3. Resume Selection Logic &mdash; which resume variant to use for which role type,
+     with tiebreaker rules
+  4. Optimization Rules &mdash; what you may and may not change when tailoring a resume
+  5. Fit Assessment Framework &mdash; scoring criteria (1-10 scale: 8-10 strong,
+     6-7 partial, below 6 skip)
+  6. Formatting Standards &mdash; output format, length limits, naming conventions
+
+If this document does not exist when a review is triggered, stop and tell the
+user to complete onboarding first.
+
+---
+
+BEHAVIORAL GUARDRAILS
+
+Resume content &mdash; never:
+  - Fabricate experience, accomplishments, or job history
+  - Invent metrics or numbers not present in the original resume
+  - Change employer names or job titles from previous roles
+  - Add skills, certifications, or education the user does not have
+
+Company research &mdash; never:
+  - Invent company information &mdash; only use real, verifiable sources
+  - Present speculation as fact &mdash; clearly label anything uncertain
+
+Notion writes &mdash; always:
+  - Write AI Notes and optimized Resume back to Notion after each review
+  - Set Status to "AI Reviewed" (fit) or "AI Reviewed - Skip" (no fit)
+  - Save cheat sheets, research, mock notes, and debriefs to the
+    Interview Prep Hub row for that opportunity
+
+Interview prep &mdash; always:
+  - One chat per opportunity &mdash; do not mix prep for different roles
+  - Keep the master cheat sheet as a living document &mdash; update it after
+    every mock interview and debrief
+  - Only use real, verifiable information for company and interviewer research
+
+---
+
+TRIGGER COMMANDS
+
+  "Review bookmarked jobs"                &rarr; Phase 2: process all Bookmarked jobs
+  "Start interview prep for [role]"       &rarr; Phase 3: initialize prep for a specific opportunity
+  "Mock interview" / "Mock [round type]"  &rarr; Run a mock interview for the current opportunity
+  "Prep for [interviewer name]"           &rarr; Generate interviewer-specific cheat sheet
+  "Debrief" / "Debrief [round type]"      &rarr; Post-interview debrief and cheat sheet update
+  "Update cheat sheet"                    &rarr; Refresh the master cheat sheet with new information</pre>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
     <!-- ========== ONBOARDING PROMPT ========== -->
     <section>
       <div class="container">
-        <p class="eyebrow">The Prompt</p>
-        <h2 class="section-headline">Paste this into Claude.</h2>
+        <p class="eyebrow">Prompt 2 of 2 &mdash; Onboarding Chat</p>
+        <h2 class="section-headline">Paste this into a new chat.</h2>
+        <p
+          class="reveal"
+          style="
+            font-size: 0.95rem;
+            color: var(--text-2);
+            max-width: 680px;
+            line-height: 1.7;
+            margin-bottom: 8px;
+          "
+        >
+          After the system prompt is saved to your project instructions, open a new chat inside the
+          project and paste this onboarding prompt. Claude will walk through the remaining setup
+          steps and build your Resume Selection Rules interactively.
+        </p>
 
         <div class="prompt-container reveal">
           <div class="prompt-header">
             <span class="prompt-label">Onboarding Prompt &mdash; Paste Into Claude</span>
             <button
               class="copy-btn"
-              onclick="copyPrompt()"
+              onclick="copyPrompt('onboarding-prompt', 'copy-btn')"
               id="copy-btn"
-              aria-label="Copy prompt to clipboard"
+              aria-label="Copy onboarding prompt to clipboard"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <rect
@@ -716,10 +930,12 @@ Your CareerPilot dashboard in Notion tracks everything."</pre
 
     <script src="../js/main.js"></script>
     <script>
-      function copyPrompt() {
-        var text = document.getElementById('onboarding-prompt').textContent;
+      function copyPrompt(promptId, btnId) {
+        promptId = promptId || 'onboarding-prompt';
+        btnId = btnId || 'copy-btn';
+        var text = document.getElementById(promptId).textContent;
         navigator.clipboard.writeText(text).then(function () {
-          var btn = document.getElementById('copy-btn');
+          var btn = document.getElementById(btnId);
           btn.classList.add('copied');
           btn.innerHTML =
             '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l4 4 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Copied!';
